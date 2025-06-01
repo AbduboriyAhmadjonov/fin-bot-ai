@@ -1,0 +1,112 @@
+// // This is your Prisma schema file,
+// // learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/db/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  telegramId BigInt   @unique
+  username   String
+  firstName  String
+  language   String   @default("en")
+  currency   String   @default("USD")
+  timezone   String   @default("UTC")
+  balance    Decimal  @default(0.00)
+  createdAt  DateTime @default(now())
+
+  voiceInputs VoiceInput[]
+  expenses    Expense[]
+  income      Income[]
+  settings    Setting?
+  categories  Category[]
+  recurring   RecurringExpense[]
+}
+
+model Category {
+  id        String       @id @default(uuid())
+  name      String
+  type      CategoryType
+  isDefault Boolean      @default(false)
+
+  userId            String?
+  user              User?              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expenses          Expense[]
+  income            Income[]
+  recurringExpenses RecurringExpense[]
+}
+
+enum CategoryType {
+  income
+  expense
+}
+
+model Expense {
+  id          String    @id @default(uuid())
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  category    Category? @relation(fields: [categoryId], references: [id])
+  categoryId  String?
+  amount      Decimal   @db.Decimal(12, 2)
+  description String?
+  timestamp   DateTime  @default(now())
+}
+
+model Income {
+  id          String    @id @default(uuid())
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  category    Category? @relation(fields: [categoryId], references: [id])
+  categoryId  String?
+  amount      Decimal   @db.Decimal(12, 2)
+  description String?
+  timestamp   DateTime  @default(now())
+  recurring   Boolean   @default(false)
+}
+
+model Setting {
+  id                   String   @id @default(uuid())
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId               String   @unique
+  aiDailyLimit         Int      @default(3)
+  aiWeeklyInsightsLeft Int      @default(1)
+  createdAt            DateTime @default(now())
+}
+
+model VoiceInput {
+  id         String   @id @default(uuid())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
+  audioUrl   String
+  transcript String?
+  processed  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}
+
+model RecurringExpense {
+  id          String         @id @default(uuid())
+  user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  category    Category?      @relation(fields: [categoryId], references: [id])
+  categoryId  String?
+  amount      Decimal        @db.Decimal(12, 2)
+  description String?
+  frequency   RecurrenceType
+  nextDue     DateTime
+  createdAt   DateTime       @default(now())
+}
+
+enum RecurrenceType {
+  WEEKLY
+  MONTHLY
+}
