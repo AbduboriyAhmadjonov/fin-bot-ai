@@ -1,11 +1,14 @@
-import prisma from '../index.js';
+import prisma from '../db/index.js';
 
 export async function addExpense({ userId, expenses }) {
+  // Validate input
+  console.log('Adding expenses for user:', userId, 'Expenses:', expenses);
+
   return await prisma.expense.createMany({
     data: expenses.map((exp) => ({
       userId,
       amount: exp.amount,
-      category: exp.category,
+      categoryId: exp.categoryId || 'Uncategorized',
       description: exp.description,
       timestamp: exp.timestamp || new Date(),
     })),
@@ -13,6 +16,8 @@ export async function addExpense({ userId, expenses }) {
 }
 
 export async function addIncome({ userId, incomes }) {
+  // Validate input
+
   return await prisma.income.createMany({
     data: incomes.map((inc) => ({
       userId,

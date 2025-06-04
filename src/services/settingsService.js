@@ -1,4 +1,4 @@
-import prisma from '../index.js';
+import prisma from '../db/index.js';
 
 export async function changeLanguage(telegramId, language) {
   return await prisma.user.update({

@@ -1,4 +1,5 @@
 import keyboard from '../keyboards/main.js';
+import { addExpense } from '../services/expenseService.js';
 
 export default async function addExpenseHandler(bot) {
   bot.hears('➕💸 Add Expense', async (ctx) => {
@@ -16,9 +17,10 @@ export default async function addExpenseHandler(bot) {
     const expenses = ctx.session?.expensesToConfirm || [];
 
     // Save to DB here...
-    // for (const exp of expenses) {
-    //   await prisma.expense.create(...);
-    // }
+    addExpense({
+      userId: userId.toString(),
+      expenses: expenses,
+    });
 
     ctx.session = null;
     await ctx.editMessageText('✅ Expenses added successfully.');

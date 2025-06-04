@@ -1,4 +1,4 @@
-import prisma from '../index.js';
+import prisma from '../db/index.js';
 
 // CREATE USER
 export async function createUser({

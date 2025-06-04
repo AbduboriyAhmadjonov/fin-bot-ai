@@ -1,6 +1,6 @@
 import keyboard from '../keyboards/main.js';
 
-import { createUser, getUserByTelegramId } from '../db/services/userService.js';
+import { createUser, getUserByTelegramId } from '../services/userService.js';
 
 export default async function contactHandler(bot) {
   bot.on('contact', async (ctx) => {
