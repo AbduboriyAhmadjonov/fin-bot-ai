@@ -21,10 +21,14 @@ const keyboard = {
 
   removeKeyboard: Markup.removeKeyboard(),
 
-  // Inline Keyboards
+  /**
+   * Settings Keyboards
+   */
+
   settingsKeyboard: Markup.inlineKeyboard([
     [Markup.button.callback('🌍 Change Language', 'CHANGE_LANGUAGE')],
     [Markup.button.callback('💵 Change Currency', 'CHANGE_CURRENCY')],
+    [Markup.button.callback('📂 Manage Categories', 'MANAGE_CATEGORIES')],
     [Markup.button.callback('🗑️ Delete Account', 'DELETE_ACCOUNT')],
     [Markup.button.callback('❌ Close Settings Menu', 'CLOSE_SETTINGS')],
   ]).resize(),
@@ -43,6 +47,34 @@ const keyboard = {
     [Markup.button.callback('🇷🇺 RUB', 'CURRENCY_RUB')],
     [Markup.button.callback('◀️ Back to Settings', 'BACK_TO_SETTINGS')],
   ]).resize(),
+
+  /**
+   * Change Category Keyboard
+   */
+
+  categoriesKeyboard: Markup.inlineKeyboard([
+    [Markup.button.callback('➕ Add New Category', 'ADD_CATEGORY')],
+    [Markup.button.callback('📝 Edit Category', 'EDIT_CATEGORY')],
+    [Markup.button.callback('📄 View All Categories', 'VIEW_CATEGORY')],
+    [Markup.button.callback('❌ Delete Category', 'DELETE_CATEGORY')],
+    [Markup.button.callback('◀️ Back to Settings', 'BACK_TO_SETTINGS')],
+  ]).resize(),
+
+  addNewCategoryKeyboard: Markup.inlineKeyboard([
+    [Markup.button.callback('🟢 Income', 'ADD_NEW_INCOME_CATEGORY')],
+    [Markup.button.callback('🔴 Expense', 'ADD_NEW_EXPENSE_CATEGORY')],
+    [Markup.button.callback('◀️ Back to Settings', 'BACK_TO_SETTINGS')],
+  ]).resize(),
+
+  editCategoryKeyboard: Markup.inlineKeyboard([
+    [Markup.button.callback('🟢 Income', 'EDIT_INCOME_CATEGORY')],
+    [Markup.button.callback('🔴 Expense', 'EDIT_EXPENSE_CATEGORY')],
+    [Markup.button.callback('◀️ Back to Settings', 'BACK_TO_SETTINGS')],
+  ]).resize(),
+
+  /**
+   * Confirmation Keyboards
+   */
 
   confirmOrCancelExpenses: Markup.inlineKeyboard([
     [Markup.button.callback('✅ Confirm', 'CONFIRM_EXPENSES')],

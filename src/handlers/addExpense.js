@@ -1,5 +1,6 @@
 import keyboard from '../keyboards/main.js';
 import { addExpense } from '../services/expenseService.js';
+// import handleCategories from '../handlers/handleCategories.js';
 
 export default async function addExpenseHandler(bot) {
   bot.hears('➕💸 Add Expense', async (ctx) => {
@@ -15,6 +16,13 @@ export default async function addExpenseHandler(bot) {
   bot.action('CONFIRM_EXPENSES', async (ctx) => {
     const userId = ctx.from.id;
     const expenses = ctx.session?.expensesToConfirm || [];
+
+    // const categories = await handleCategories(bot, ctx, expenses);
+
+    if (!categories || categories.length === 0) {
+      await ctx.reply('❌ No valid categories found for the expenses.');
+      return;
+    }
 
     // Save to DB here...
     addExpense({
