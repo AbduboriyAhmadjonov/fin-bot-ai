@@ -12,6 +12,23 @@ export async function createUser({
   });
 }
 
+export async function createUserIfNotExisted(ctx) {
+  const existing = await getUserByTelegramId(ctx.from.id);
+
+  if (!existing) {
+    const newUser = await createUser({
+      telegramId: ctx.from.id,
+      username: ctx.from.username,
+      firstName: ctx.message?.from?.first_name || ctx.from.first_name,
+      phoneNumber: ctx.message?.contact?.phone_number || null,
+    });
+
+    return newUser;
+  }
+
+  return existing;
+}
+
 // READ
 export async function getUserByTelegramId(telegramId) {
   return await prisma.user.findUnique({

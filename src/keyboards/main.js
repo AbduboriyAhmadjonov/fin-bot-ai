@@ -60,16 +60,32 @@ const keyboard = {
     [Markup.button.callback('◀️ Back to Settings', 'BACK_TO_SETTINGS')],
   ]).resize(),
 
+  backToCategoriesKeyboard: Markup.inlineKeyboard([
+    [Markup.button.callback('◀️ Back to Categories', 'BACK_TO_CATEGORIES')],
+  ]).resize(),
+
   addNewCategoryKeyboard: Markup.inlineKeyboard([
-    [Markup.button.callback('🟢 Income', 'ADD_NEW_INCOME_CATEGORY')],
-    [Markup.button.callback('🔴 Expense', 'ADD_NEW_EXPENSE_CATEGORY')],
-    [Markup.button.callback('◀️ Back to Settings', 'BACK_TO_SETTINGS')],
+    [Markup.button.callback('🟢 Income Category', 'ADD_NEW_INCOME_CATEGORY')],
+    [Markup.button.callback('🔴 Expense Category', 'ADD_NEW_EXPENSE_CATEGORY')],
+    [Markup.button.callback('◀️ Back to Categories', 'BACK_TO_CATEGORIES')],
   ]).resize(),
 
   editCategoryKeyboard: Markup.inlineKeyboard([
-    [Markup.button.callback('🟢 Income', 'EDIT_INCOME_CATEGORY')],
-    [Markup.button.callback('🔴 Expense', 'EDIT_EXPENSE_CATEGORY')],
-    [Markup.button.callback('◀️ Back to Settings', 'BACK_TO_SETTINGS')],
+    [Markup.button.callback('🟢 Income Category', 'EDIT_INCOME_CATEGORY')],
+    [Markup.button.callback('🔴 Expense Category', 'EDIT_EXPENSE_CATEGORY')],
+    [Markup.button.callback('◀️ Back to Categories', 'BACK_TO_CATEGORIES')],
+  ]).resize(),
+
+  editCategoryKeyboard: Markup.inlineKeyboard([
+    [Markup.button.callback('🟢 Income Category', 'EDIT_INCOME_CATEGORY')],
+    [Markup.button.callback('🔴 Expense Category', 'EDIT_EXPENSE_CATEGORY')],
+    [Markup.button.callback('◀️ Back to Categories', 'BACK_TO_SETTINGS')],
+  ]).resize(),
+
+  editCategoryKeyboard: Markup.inlineKeyboard([
+    [Markup.button.callback('🟢 Income Category', 'EDIT_INCOME_CATEGORY')],
+    [Markup.button.callback('🔴 Expense Category', 'EDIT_EXPENSE_CATEGORY')],
+    [Markup.button.callback('◀️ Back to Categories', 'BACK_TO_SETTINGS')],
   ]).resize(),
 
   /**
