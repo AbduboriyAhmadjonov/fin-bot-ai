@@ -1,6 +1,6 @@
 import keyboard from '../keyboards/main.js';
 
-export default async function addIncomeHandler(bot) {
+export default async function incomeHandler(bot) {
   bot.hears('➕💰 Add Income', async (ctx) => {
     ctx.session ??= {};
     ctx.session.state = 'awaiting_income';

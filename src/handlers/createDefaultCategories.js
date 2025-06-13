@@ -1,7 +1,7 @@
 import { createUserIfNotExisted } from '../services/userService.js';
-import { addCategory } from '../services/categoriesService.js';
+import { addCategory } from '../services/index.js';
 
-export async function createDefaultCategories(ctx) {
+export default async function createDefaultCategories(ctx) {
   const user = await createUserIfNotExisted(ctx);
 
   const defaultCategories = [

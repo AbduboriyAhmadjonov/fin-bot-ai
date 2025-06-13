@@ -1,19 +1,31 @@
-import startHandler from './startHandler.js';
-import settingsHandler from './settingsHandler.js';
-import categoryHandler from './categoryHandler.js';
+import startHandler from './commands/startHandler.js';
 import incomeHandler from './incomeHandler.js';
 import expenseHandler from './expenseHandler.js';
-import summaryHandler from './summaryHandler.js';
-import exportHandler from './exportHandler.js';
-import adminHandler from './adminHandler.js';
+import contactHandler from './contactHandler.js';
+
+// Settings handlers
+import settingsHandler from './settings/settings.js';
+import categoryHandler from './settings/changeCategory.js';
+import currencyHandler from './settings/changeCurrency.js';
+import languageHandler from './settings/changeLanguage.js';
+import deleteAccountHandler from './settings/deleteAccaunt.js';
+
+// Admin
+import registerAdminLogin from './adminLogin.js';
 
 export default function registerHandlers(bot) {
   startHandler(bot);
-  settingsHandler(bot);
-  categoryHandler(bot);
   incomeHandler(bot);
   expenseHandler(bot);
-  summaryHandler(bot);
-  exportHandler(bot);
-  adminHandler(bot);
+  contactHandler(bot);
+
+  // Settings
+  settingsHandler(bot);
+  categoryHandler(bot);
+  currencyHandler(bot);
+  languageHandler(bot);
+  deleteAccountHandler(bot);
+
+  // Admin
+  registerAdminLogin(bot);
 }

@@ -3,9 +3,9 @@ import {
   addCategory,
   deleteCategory,
   viewCategories,
-} from '../../services/categoriesService.js';
+} from '../../services/categoryService.js';
 
-export const categoriesHandler = async (bot) => {
+export default async function categoryHandler(bot) {
   bot.action('MANAGE_CATEGORIES', async (ctx) => {
     ctx.session ??= {};
     ctx.session.state = 'awaiting_category_action';
@@ -147,4 +147,4 @@ export const categoriesHandler = async (bot) => {
       await ctx.editMessageText('❌ Failed to delete category.');
     }
   });
-};
+}

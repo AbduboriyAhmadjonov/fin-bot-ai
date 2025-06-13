@@ -1,6 +1,6 @@
 import keyboard from '../../keyboards/main.js';
 
-export const currencyHandler = async (bot) => {
+export default async function currencyHandler(bot) {
   bot.action('CHANGE_CURRENCY', async (ctx) => {
     await ctx.answerCbQuery();
     await ctx.editMessageText(
@@ -36,4 +36,4 @@ export const currencyHandler = async (bot) => {
     await ctx.editMessageText('✅ Currency set to RUB 🇷🇺');
     await ctx.replyWithMarkdown('Settings Menu', keyboard.settingsKeyboard); // extra
   });
-};
+}

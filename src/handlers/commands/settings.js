@@ -1,4 +1,4 @@
-import keyboard from '../keyboards/main.js';
+import keyboard from '../../keyboards/main.js';
 
 export default async function settingsCommand(bot) {
   bot.command('settings', (ctx) => {

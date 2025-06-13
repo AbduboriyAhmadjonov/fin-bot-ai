@@ -1,8 +1,8 @@
 import keyboard from '../keyboards/main.js';
-import { addExpense } from '../services/expenseService.js';
-import { categoriesHandler } from '../handlers/settings/categories.js';
+import { addExpense } from '../services/index.js';
+import categoryHandler from './index.js';
 
-export default async function addExpenseHandler(bot) {
+export default async function expenseHandler(bot) {
   bot.hears('➕💸 Add Expense', async (ctx) => {
     ctx.session ??= {};
     ctx.session.state = 'awaiting_expense';
@@ -17,7 +17,7 @@ export default async function addExpenseHandler(bot) {
     const userId = ctx.from.id;
     const expenses = ctx.session?.expensesToConfirm || [];
 
-    const categories = await categoriesHandler(bot, ctx, expenses);
+    const categories = await categoryHandler(bot, ctx, expenses);
 
     if (!categories || categories.length === 0) {
       await ctx.reply('❌ Something went wrong. Please try again.');

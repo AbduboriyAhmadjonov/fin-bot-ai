@@ -1,6 +1,6 @@
 import keyboard from '../keyboards/main.js';
-import { createUserIfNotExisted } from '../services/userService.js';
-import { createDefaultCategories } from '../handlers/handleStart.js';
+import { createUserIfNotExisted } from '../services/index.js';
+import createDefaultCategories from './createDefaultCategories.js';
 
 export default async function contactHandler(bot) {
   bot.on('contact', async (ctx) => {
