@@ -26,27 +26,6 @@ export const categoriesHandler = async (bot) => {
   });
 
   /** Add New Category */
-  // bot.action('ADD_CATEGORY', async (ctx) => {
-  //   await ctx.answerCbQuery();
-  //   await ctx.editMessageText(
-  //     'Please choose the type of category:',
-  //     keyboard.addNewCategoryKeyboard
-  //   );
-  // });
-
-  // bot.action('ADD_NEW_INCOME_CATEGORY', async (ctx) => {
-  //   await ctx.answerCbQuery();
-  //   await ctx.editMessageText(
-  //     'Please send the category name (e.g., Salary, Gift, Refund):'
-  //   );
-  // });
-
-  // bot.action('ADD_NEW_EXPENSE_CATEGORY', async (ctx) => {
-  //   await ctx.answerCbQuery();
-  //   await ctx.editMessageText(
-  //     'Please send the category name (e.g., Salary, Gift, Refund):'
-  //   );
-  // });
 
   bot.action('ADD_CATEGORY', async (ctx) => {
     await ctx.answerCbQuery();
@@ -131,10 +110,6 @@ export const categoriesHandler = async (bot) => {
   });
 
   /** Delete Category */
-  // bot.action('DELETE_CATEGORY', async (ctx) => {
-  //   await ctx.answerCbQuery();
-  //   await ctx.editMessageText("✅ Til o'zbek tiliga o'zgartirildi 🇺🇿");
-  // });
 
   bot.action('DELETE_CATEGORY', async (ctx) => {
     await ctx.answerCbQuery();

@@ -1586,6 +1586,7 @@ export namespace Prisma {
     telegramId: bigint | null
     username: string | null
     firstName: string | null
+    phoneNumber: string | null
     language: string | null
     currency: string | null
     timezone: string | null
@@ -1598,6 +1599,7 @@ export namespace Prisma {
     telegramId: bigint | null
     username: string | null
     firstName: string | null
+    phoneNumber: string | null
     language: string | null
     currency: string | null
     timezone: string | null
@@ -1610,6 +1612,7 @@ export namespace Prisma {
     telegramId: number
     username: number
     firstName: number
+    phoneNumber: number
     language: number
     currency: number
     timezone: number
@@ -1634,6 +1637,7 @@ export namespace Prisma {
     telegramId?: true
     username?: true
     firstName?: true
+    phoneNumber?: true
     language?: true
     currency?: true
     timezone?: true
@@ -1646,6 +1650,7 @@ export namespace Prisma {
     telegramId?: true
     username?: true
     firstName?: true
+    phoneNumber?: true
     language?: true
     currency?: true
     timezone?: true
@@ -1658,6 +1663,7 @@ export namespace Prisma {
     telegramId?: true
     username?: true
     firstName?: true
+    phoneNumber?: true
     language?: true
     currency?: true
     timezone?: true
@@ -1755,8 +1761,9 @@ export namespace Prisma {
   export type UserGroupByOutputType = {
     id: string
     telegramId: bigint
-    username: string
+    username: string | null
     firstName: string
+    phoneNumber: string | null
     language: string
     currency: string
     timezone: string
@@ -1788,6 +1795,7 @@ export namespace Prisma {
     telegramId?: boolean
     username?: boolean
     firstName?: boolean
+    phoneNumber?: boolean
     language?: boolean
     currency?: boolean
     timezone?: boolean
@@ -1807,6 +1815,7 @@ export namespace Prisma {
     telegramId?: boolean
     username?: boolean
     firstName?: boolean
+    phoneNumber?: boolean
     language?: boolean
     currency?: boolean
     timezone?: boolean
@@ -1819,6 +1828,7 @@ export namespace Prisma {
     telegramId?: boolean
     username?: boolean
     firstName?: boolean
+    phoneNumber?: boolean
     language?: boolean
     currency?: boolean
     timezone?: boolean
@@ -1831,6 +1841,7 @@ export namespace Prisma {
     telegramId?: boolean
     username?: boolean
     firstName?: boolean
+    phoneNumber?: boolean
     language?: boolean
     currency?: boolean
     timezone?: boolean
@@ -1838,7 +1849,7 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "telegramId" | "username" | "firstName" | "language" | "currency" | "timezone" | "balance" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "telegramId" | "username" | "firstName" | "phoneNumber" | "language" | "currency" | "timezone" | "balance" | "createdAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     voiceInputs?: boolean | User$voiceInputsArgs<ExtArgs>
     expenses?: boolean | User$expensesArgs<ExtArgs>
@@ -1864,8 +1875,9 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       telegramId: bigint
-      username: string
+      username: string | null
       firstName: string
+      phoneNumber: string | null
       language: string
       currency: string
       timezone: string
@@ -2304,6 +2316,7 @@ export namespace Prisma {
     readonly telegramId: FieldRef<"User", 'BigInt'>
     readonly username: FieldRef<"User", 'String'>
     readonly firstName: FieldRef<"User", 'String'>
+    readonly phoneNumber: FieldRef<"User", 'String'>
     readonly language: FieldRef<"User", 'String'>
     readonly currency: FieldRef<"User", 'String'>
     readonly timezone: FieldRef<"User", 'String'>
@@ -9638,6 +9651,7 @@ export namespace Prisma {
     telegramId: 'telegramId',
     username: 'username',
     firstName: 'firstName',
+    phoneNumber: 'phoneNumber',
     language: 'language',
     currency: 'currency',
     timezone: 'timezone',
@@ -9878,8 +9892,9 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
     telegramId?: BigIntFilter<"User"> | bigint | number
-    username?: StringFilter<"User"> | string
+    username?: StringNullableFilter<"User"> | string | null
     firstName?: StringFilter<"User"> | string
+    phoneNumber?: StringNullableFilter<"User"> | string | null
     language?: StringFilter<"User"> | string
     currency?: StringFilter<"User"> | string
     timezone?: StringFilter<"User"> | string
@@ -9896,8 +9911,9 @@ export namespace Prisma {
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     telegramId?: SortOrder
-    username?: SortOrder
+    username?: SortOrderInput | SortOrder
     firstName?: SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
     language?: SortOrder
     currency?: SortOrder
     timezone?: SortOrder
@@ -9917,8 +9933,9 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    username?: StringFilter<"User"> | string
+    username?: StringNullableFilter<"User"> | string | null
     firstName?: StringFilter<"User"> | string
+    phoneNumber?: StringNullableFilter<"User"> | string | null
     language?: StringFilter<"User"> | string
     currency?: StringFilter<"User"> | string
     timezone?: StringFilter<"User"> | string
@@ -9935,8 +9952,9 @@ export namespace Prisma {
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     telegramId?: SortOrder
-    username?: SortOrder
+    username?: SortOrderInput | SortOrder
     firstName?: SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
     language?: SortOrder
     currency?: SortOrder
     timezone?: SortOrder
@@ -9955,8 +9973,9 @@ export namespace Prisma {
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
     telegramId?: BigIntWithAggregatesFilter<"User"> | bigint | number
-    username?: StringWithAggregatesFilter<"User"> | string
+    username?: StringNullableWithAggregatesFilter<"User"> | string | null
     firstName?: StringWithAggregatesFilter<"User"> | string
+    phoneNumber?: StringNullableWithAggregatesFilter<"User"> | string | null
     language?: StringWithAggregatesFilter<"User"> | string
     currency?: StringWithAggregatesFilter<"User"> | string
     timezone?: StringWithAggregatesFilter<"User"> | string
@@ -10358,8 +10377,9 @@ export namespace Prisma {
   export type UserCreateInput = {
     id?: string
     telegramId: bigint | number
-    username: string
+    username?: string | null
     firstName: string
+    phoneNumber?: string | null
     language?: string
     currency?: string
     timezone?: string
@@ -10376,8 +10396,9 @@ export namespace Prisma {
   export type UserUncheckedCreateInput = {
     id?: string
     telegramId: bigint | number
-    username: string
+    username?: string | null
     firstName: string
+    phoneNumber?: string | null
     language?: string
     currency?: string
     timezone?: string
@@ -10394,8 +10415,9 @@ export namespace Prisma {
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string
@@ -10412,8 +10434,9 @@ export namespace Prisma {
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string
@@ -10430,8 +10453,9 @@ export namespace Prisma {
   export type UserCreateManyInput = {
     id?: string
     telegramId: bigint | number
-    username: string
+    username?: string | null
     firstName: string
+    phoneNumber?: string | null
     language?: string
     currency?: string
     timezone?: string
@@ -10442,8 +10466,9 @@ export namespace Prisma {
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string
@@ -10454,8 +10479,9 @@ export namespace Prisma {
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string
@@ -10877,6 +10903,21 @@ export namespace Prisma {
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type DecimalFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
@@ -10934,6 +10975,11 @@ export namespace Prisma {
     none?: RecurringExpenseWhereInput
   }
 
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type VoiceInputOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -10959,6 +11005,7 @@ export namespace Prisma {
     telegramId?: SortOrder
     username?: SortOrder
     firstName?: SortOrder
+    phoneNumber?: SortOrder
     language?: SortOrder
     currency?: SortOrder
     timezone?: SortOrder
@@ -10976,6 +11023,7 @@ export namespace Prisma {
     telegramId?: SortOrder
     username?: SortOrder
     firstName?: SortOrder
+    phoneNumber?: SortOrder
     language?: SortOrder
     currency?: SortOrder
     timezone?: SortOrder
@@ -10988,6 +11036,7 @@ export namespace Prisma {
     telegramId?: SortOrder
     username?: SortOrder
     firstName?: SortOrder
+    phoneNumber?: SortOrder
     language?: SortOrder
     currency?: SortOrder
     timezone?: SortOrder
@@ -11034,6 +11083,24 @@ export namespace Prisma {
     _max?: NestedBigIntFilter<$PrismaModel>
   }
 
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
@@ -11076,29 +11143,9 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type UserNullableScalarRelationFilter = {
     is?: UserWhereInput | null
     isNot?: UserWhereInput | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type CategoryCountOrderByAggregateInput = {
@@ -11141,24 +11188,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type UserScalarRelationFilter = {
@@ -11484,6 +11513,10 @@ export namespace Prisma {
     divide?: bigint | number
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type DecimalFieldUpdateOperationsInput = {
     set?: Decimal | DecimalJsLike | number | string
     increment?: Decimal | DecimalJsLike | number | string
@@ -11764,10 +11797,6 @@ export namespace Prisma {
     deleteMany?: RecurringExpenseScalarWhereInput | RecurringExpenseScalarWhereInput[]
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
   export type ExpenseUncheckedUpdateManyWithoutCategoryNestedInput = {
     create?: XOR<ExpenseCreateWithoutCategoryInput, ExpenseUncheckedCreateWithoutCategoryInput> | ExpenseCreateWithoutCategoryInput[] | ExpenseUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: ExpenseCreateOrConnectWithoutCategoryInput | ExpenseCreateOrConnectWithoutCategoryInput[]
@@ -11965,6 +11994,20 @@ export namespace Prisma {
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedDecimalFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
@@ -12042,6 +12085,34 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
@@ -12084,20 +12155,6 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type NestedEnumCategoryTypeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.CategoryType | EnumCategoryTypeFieldRefInput<$PrismaModel>
     in?: $Enums.CategoryType[] | ListEnumCategoryTypeFieldRefInput<$PrismaModel>
@@ -12114,34 +12171,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -12506,8 +12535,9 @@ export namespace Prisma {
   export type UserCreateWithoutCategoriesInput = {
     id?: string
     telegramId: bigint | number
-    username: string
+    username?: string | null
     firstName: string
+    phoneNumber?: string | null
     language?: string
     currency?: string
     timezone?: string
@@ -12523,8 +12553,9 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutCategoriesInput = {
     id?: string
     telegramId: bigint | number
-    username: string
+    username?: string | null
     firstName: string
+    phoneNumber?: string | null
     language?: string
     currency?: string
     timezone?: string
@@ -12640,8 +12671,9 @@ export namespace Prisma {
   export type UserUpdateWithoutCategoriesInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string
@@ -12657,8 +12689,9 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutCategoriesInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string
@@ -12722,8 +12755,9 @@ export namespace Prisma {
   export type UserCreateWithoutExpensesInput = {
     id?: string
     telegramId: bigint | number
-    username: string
+    username?: string | null
     firstName: string
+    phoneNumber?: string | null
     language?: string
     currency?: string
     timezone?: string
@@ -12739,8 +12773,9 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutExpensesInput = {
     id?: string
     telegramId: bigint | number
-    username: string
+    username?: string | null
     firstName: string
+    phoneNumber?: string | null
     language?: string
     currency?: string
     timezone?: string
@@ -12797,8 +12832,9 @@ export namespace Prisma {
   export type UserUpdateWithoutExpensesInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string
@@ -12814,8 +12850,9 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutExpensesInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string
@@ -12862,8 +12899,9 @@ export namespace Prisma {
   export type UserCreateWithoutIncomeInput = {
     id?: string
     telegramId: bigint | number
-    username: string
+    username?: string | null
     firstName: string
+    phoneNumber?: string | null
     language?: string
     currency?: string
     timezone?: string
@@ -12879,8 +12917,9 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutIncomeInput = {
     id?: string
     telegramId: bigint | number
-    username: string
+    username?: string | null
     firstName: string
+    phoneNumber?: string | null
     language?: string
     currency?: string
     timezone?: string
@@ -12937,8 +12976,9 @@ export namespace Prisma {
   export type UserUpdateWithoutIncomeInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string
@@ -12954,8 +12994,9 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutIncomeInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string
@@ -13002,8 +13043,9 @@ export namespace Prisma {
   export type UserCreateWithoutSettingsInput = {
     id?: string
     telegramId: bigint | number
-    username: string
+    username?: string | null
     firstName: string
+    phoneNumber?: string | null
     language?: string
     currency?: string
     timezone?: string
@@ -13019,8 +13061,9 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutSettingsInput = {
     id?: string
     telegramId: bigint | number
-    username: string
+    username?: string | null
     firstName: string
+    phoneNumber?: string | null
     language?: string
     currency?: string
     timezone?: string
@@ -13052,8 +13095,9 @@ export namespace Prisma {
   export type UserUpdateWithoutSettingsInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string
@@ -13069,8 +13113,9 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutSettingsInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string
@@ -13086,8 +13131,9 @@ export namespace Prisma {
   export type UserCreateWithoutVoiceInputsInput = {
     id?: string
     telegramId: bigint | number
-    username: string
+    username?: string | null
     firstName: string
+    phoneNumber?: string | null
     language?: string
     currency?: string
     timezone?: string
@@ -13103,8 +13149,9 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutVoiceInputsInput = {
     id?: string
     telegramId: bigint | number
-    username: string
+    username?: string | null
     firstName: string
+    phoneNumber?: string | null
     language?: string
     currency?: string
     timezone?: string
@@ -13136,8 +13183,9 @@ export namespace Prisma {
   export type UserUpdateWithoutVoiceInputsInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string
@@ -13153,8 +13201,9 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutVoiceInputsInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string
@@ -13170,8 +13219,9 @@ export namespace Prisma {
   export type UserCreateWithoutRecurringInput = {
     id?: string
     telegramId: bigint | number
-    username: string
+    username?: string | null
     firstName: string
+    phoneNumber?: string | null
     language?: string
     currency?: string
     timezone?: string
@@ -13187,8 +13237,9 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutRecurringInput = {
     id?: string
     telegramId: bigint | number
-    username: string
+    username?: string | null
     firstName: string
+    phoneNumber?: string | null
     language?: string
     currency?: string
     timezone?: string
@@ -13245,8 +13296,9 @@ export namespace Prisma {
   export type UserUpdateWithoutRecurringInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string
@@ -13262,8 +13314,9 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutRecurringInput = {
     id?: StringFieldUpdateOperationsInput | string
     telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
-    username?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
     currency?: StringFieldUpdateOperationsInput | string
     timezone?: StringFieldUpdateOperationsInput | string

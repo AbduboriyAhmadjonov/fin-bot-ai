@@ -15,15 +15,16 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(uuid())
-  telegramId BigInt   @unique
-  username   String
-  firstName  String
-  language   String   @default("en")
-  currency   String   @default("USD")
-  timezone   String   @default("UTC")
-  balance    Decimal  @default(0.00)
-  createdAt  DateTime @default(now())
+  id          String   @id @default(uuid())
+  telegramId  BigInt   @unique
+  username    String?
+  firstName   String
+  phoneNumber String?
+  language    String   @default("en")
+  currency    String   @default("USD")
+  timezone    String   @default("UTC")
+  balance     Decimal  @default(0.00)
+  createdAt   DateTime @default(now())
 
   voiceInputs VoiceInput[]
   expenses    Expense[]

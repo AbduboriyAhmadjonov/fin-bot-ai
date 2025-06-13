@@ -1,5 +1,6 @@
 import keyboard from '../keyboards/main.js';
-import { createUserIfNotExisted } from '../handlers/handleStart.js';
+import { createUserIfNotExisted } from '../services/userService.js';
+import { createDefaultCategories } from '../handlers/handleStart.js';
 
 export default async function contactHandler(bot) {
   bot.on('contact', async (ctx) => {
@@ -15,5 +16,7 @@ If you want you can enter how much amount of money you have in your account.
 Or you can just skip this step entirely or/and enter it later.`,
       keyboard.mainMenu
     );
+
+    createDefaultCategories(ctx);
   });
 }

@@ -16,13 +16,6 @@ export default async function deleteAccountHandler(bot) {
   // Handle confirmation
   bot.action('CONFIRM_DELETE', async (ctx) => {
     await ctx.answerCbQuery();
-    // await pool.query('DELETE FROM users WHERE telegram_id = $1', [
-    //   ctx.from.id,
-    // ]);
-    // // Optionally delete expenses too
-    // await pool.query('DELETE FROM expenses WHERE user_id = $1', [
-    //   ctx.from.id,
-    // ]);
 
     await ctx.editMessageText('🗑️ Your account has been deleted successfully.');
   });

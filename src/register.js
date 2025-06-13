@@ -1,3 +1,6 @@
+// Delete it before production
+import { utils } from '../utils.js';
+
 import startCommand from './commands/start.js';
 import helpCommand from './commands/help.js';
 import settingsCommand from './commands/settings.js';
@@ -20,6 +23,8 @@ import deleteAccountHandler from './handlers/settings/deleteAccaunt.js';
 import { addCategory } from './services/categoriesService.js';
 
 export default function register(bot) {
+  utils(bot);
+
   // Commands
   startCommand(bot);
   helpCommand(bot);
