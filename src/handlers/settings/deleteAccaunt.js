@@ -16,7 +16,7 @@ export default async function deleteAccountHandler(bot) {
   // Handle confirmation
   bot.action('CONFIRM_DELETE', async (ctx) => {
     await ctx.answerCbQuery();
-
+    // TODO Delete
     await ctx.editMessageText('🗑️ Your account has been deleted successfully.');
   });
 
@@ -24,6 +24,6 @@ export default async function deleteAccountHandler(bot) {
   bot.action('CANCEL_DELETE', async (ctx) => {
     await ctx.answerCbQuery();
     await ctx.editMessageText('👍 Account deletion cancelled.');
-    await ctx.replyWithMarkdown('Settings Menu', keyboard.settingsKeyboard); // extra
+    await ctx.replyWithMarkdown('Back to Settings', keyboard.settingsKeyboard); // extra
   });
 }

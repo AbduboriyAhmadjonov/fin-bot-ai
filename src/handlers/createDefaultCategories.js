@@ -19,10 +19,17 @@ export default async function createDefaultCategories(ctx) {
 
   for (const category of defaultCategories) {
     await addCategory({
-      userId: user.id,
+      telegramId: user.telegramId,
       name: category.name,
       type: category.type,
       isDefault: category.isDefault,
     });
   }
 }
+
+/**
+  ,
+  name,
+  type,
+  isDefault = false,
+ */
