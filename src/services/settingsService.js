@@ -1,21 +1,21 @@
-import prisma from '../db/index.js';
+import prisma from '../db/prismaClient.js';
 
 export async function changeLanguage(telegramId, language) {
-  return await prisma.user.update({
-    where: { telegramId },
+  return prisma.user.update({
+    where: { telegramId: BigInt(telegramId) },
     data: { language },
   });
 }
 
 export async function changeCurrency(telegramId, currency) {
-  return await prisma.user.update({
-    where: { telegramId },
+  return prisma.user.update({
+    where: { telegramId: BigInt(telegramId) },
     data: { currency },
   });
 }
 
 export async function deleteAccount(telegramId) {
-  return await prisma.user.delete({
-    where: { telegramId },
+  return prisma.user.delete({
+    where: { telegramId: BigInt(telegramId) },
   });
 }

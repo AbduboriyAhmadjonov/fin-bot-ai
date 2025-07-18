@@ -5,7 +5,8 @@
   "main": "bot.js",
   "scripts": {
     "start": "node ./src/bot.js",
-    "dev": "nodemon ./src/bot.js"
+    "dev": "nodemon ./src/bot.js",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
@@ -17,9 +18,12 @@
     "dotenv": "^16.5.0",
     "nodemon": "^3.1.10",
     "pg": "^8.16.0",
-    "telegraf": "^4.16.3"
+    "telegraf": "^4.16.3",
+    "pino": "^8.17.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
-    "prisma": "^6.8.2"
+    "prisma": "^6.8.2",
+    "vitest": "^0.34.6"
   }
 }

@@ -1,4 +1,4 @@
-import prisma from './src/db/index.js';
+import prisma from './src/db/prismaClient.js';
 
 export async function utils(bot) {
   // bot.on('text', async (ctx) => {

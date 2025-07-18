@@ -1,4 +1,5 @@
 import keyboard from '../../keyboards/main.js';
+import { deleteAccount } from '../../services/settingsService.js';
 
 // commands/deleteAccount.js
 export default async function deleteAccountHandler(bot) {
@@ -16,7 +17,7 @@ export default async function deleteAccountHandler(bot) {
   // Handle confirmation
   bot.action('CONFIRM_DELETE', async (ctx) => {
     await ctx.answerCbQuery();
-    // TODO Delete
+    await deleteAccount(ctx.from.id);
     await ctx.editMessageText('🗑️ Your account has been deleted successfully.');
   });
 

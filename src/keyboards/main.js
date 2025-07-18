@@ -3,14 +3,8 @@ import { Markup } from 'telegraf';
 const keyboard = {
   // Keyboards
   mainMenu: Markup.keyboard([
-    [
-      Markup.button.callback('➕💸 Add Expense', 'ADD_EXPENSE'),
-      Markup.button.callback('➕💰 Add Income', 'ADD_INCOME'),
-    ],
-    [
-      Markup.button.callback('📊 View Summary', 'VIEW_SUMMARY'),
-      Markup.button.callback('⚙️ Settings', 'SETTINGS'),
-    ],
+    ['➕💸 Add Expense', '➕💰 Add Income'],
+    ['📊 View Summary', '⚙️ Settings'],
   ]).resize(),
 
   contactRequest: Markup.keyboard([
@@ -74,18 +68,6 @@ const keyboard = {
     [Markup.button.callback('🟢 Income Category', 'EDIT_INCOME_CATEGORY')],
     [Markup.button.callback('🔴 Expense Category', 'EDIT_EXPENSE_CATEGORY')],
     [Markup.button.callback('◀️ Back to Categories', 'BACK_TO_CATEGORIES')],
-  ]).resize(),
-
-  editCategoryKeyboard: Markup.inlineKeyboard([
-    [Markup.button.callback('🟢 Income Category', 'EDIT_INCOME_CATEGORY')],
-    [Markup.button.callback('🔴 Expense Category', 'EDIT_EXPENSE_CATEGORY')],
-    [Markup.button.callback('◀️ Back to Categories', 'BACK_TO_SETTINGS')],
-  ]).resize(),
-
-  editCategoryKeyboard: Markup.inlineKeyboard([
-    [Markup.button.callback('🟢 Income Category', 'EDIT_INCOME_CATEGORY')],
-    [Markup.button.callback('🔴 Expense Category', 'EDIT_EXPENSE_CATEGORY')],
-    [Markup.button.callback('◀️ Back to Categories', 'BACK_TO_SETTINGS')],
   ]).resize(),
 
   /**

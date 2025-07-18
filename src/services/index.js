@@ -3,3 +3,4 @@ export * from './settingsService.js';
 export * from './categoryService.js';
 export * from './expenseService.js';
 export * from './incomeService.js';
+export * from './summaryService.js';

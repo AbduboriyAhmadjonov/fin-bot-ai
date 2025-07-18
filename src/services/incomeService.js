@@ -1,12 +1,15 @@
-export async function addIncome({ userId, incomes }) {
-  // Validate input
+import prisma from '../db/prismaClient.js';
+import { getOrCreateUser } from './userService.js';
 
-  return await prisma.income.createMany({
+export async function addIncomes(telegramId, incomes) {
+  if (!Array.isArray(incomes) || !incomes.length) throw new Error('No incomes');
+  const user = await getOrCreateUser(telegramId);
+  return prisma.income.createMany({
     data: incomes.map((inc) => ({
-      userId,
+      userId: user.id,
       amount: inc.amount,
-      categoryId: inc.categoryId,
-      description: inc.description,
+      categoryId: inc.categoryId || null,
+      description: inc.description || null,
       timestamp: inc.timestamp || new Date(),
     })),
   });

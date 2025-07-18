@@ -1,5 +1,5 @@
 import keyboard from '../keyboards/main.js';
-import { addIncome } from '../services/index.js';
+import { addIncomes } from '../services/index.js';
 
 export default function incomeHandler(bot) {
   // Step 1: Start Income Flow
@@ -58,13 +58,7 @@ export default function incomeHandler(bot) {
     const incomes = ctx.session?.incomesToConfirm || [];
 
     try {
-      for (const income of incomes) {
-        await addIncome({
-          telegramId: userId,
-          amount: income.amount,
-          description: income.description,
-        });
-      }
+      await addIncomes(userId.toString(), incomes);
 
       ctx.session.state = null;
       ctx.session.incomesToConfirm = [];

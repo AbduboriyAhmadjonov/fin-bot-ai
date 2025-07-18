@@ -19,6 +19,13 @@ FinBot AI is a personal finance assistant bot built with **Node.js**, **Telegraf
 - **PostgreSQL** (via Prisma ORM)
 - **Google Speech-to-Text API**
 
+## Quick Start
+
+1. `npm install`
+2. Copy `.env.example` to `.env` and fill in values.
+3. Run `npx prisma migrate deploy`
+4. `npm start`
+
 ## Getting Started
 
 ### Prerequisites
@@ -66,10 +73,15 @@ docker run --env-file .env finbot-ai
 ```
 
 ## Project Structure
-
-- `src/` – Main source code (commands, handlers, services, etc.)
-- `prisma/` – Prisma schema and migrations
-- `.env` – Environment variables
+- `src/` – bot and source modules
+- `src/config` – environment configuration
+- `src/db` – Prisma client
+- `src/handlers` – bot handlers
+- `src/services` – business logic
+- `src/middleware` – bot middleware
+- `src/keyboards` – keyboard factories
+- `tests/` – Vitest specs
+- `prisma/` – schema and migrations
 
 ## Contributing
 
@@ -82,3 +94,10 @@ MIT
 ---
 
 **FinBot AI** – Smarter money management, right in your chat.
+- **Scripts**
+
+```bash
+npm start     # start the bot
+npm run dev   # start with nodemon
+npm test      # run unit tests
+```

@@ -47,12 +47,12 @@
 // }
 
 import keyboard from '../keyboards/main.js';
-import { addExpense } from '../services/index.js';
+import { addExpenses } from '../services/index.js';
 
 export default function expenseHandler(bot) {
   // 1. Start Expense Flow
   // bot.hears('➕💸 Add Expense', async (ctx) => {
-  bot.action('ADD_EXPENSE', async (ctx) => {
+  bot.hears('➕💸 Add Expense', async (ctx) => {
     ctx.session.state = 'awaiting_expense';
     ctx.session.expensesToConfirm = [];
 
@@ -105,10 +105,7 @@ export default function expenseHandler(bot) {
     const expenses = ctx.session?.expensesToConfirm || [];
 
     try {
-      await addExpense({
-        telegramId: userId.toString(),
-        expenses: expenses,
-      });
+      await addExpenses(userId.toString(), expenses);
 
       ctx.session.state = null;
       ctx.session.expensesToConfirm = [];

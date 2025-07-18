@@ -8,7 +8,7 @@ import settingsHandler from './settings/settings.js';
 import categoryHandler from './settings/changeCategory.js';
 import currencyHandler from './settings/changeCurrency.js';
 import languageHandler from './settings/changeLanguage.js';
-import deleteAccountHandler from './settings/deleteAccaunt.js';
+import deleteAccountHandler from './settings/deleteAccount.js';
 
 // Admin
 import registerAdminLogin from './adminLogin.js';

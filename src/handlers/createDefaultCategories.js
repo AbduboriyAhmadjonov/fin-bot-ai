@@ -1,30 +1,9 @@
-import { createUserIfNotExisted } from '../services/userService.js';
-import { addCategory } from '../services/index.js';
+import { getOrCreateUser } from '../services/userService.js';
+import { ensureDefaultCategories } from '../services/categoryService.js';
 
 export default async function createDefaultCategories(ctx) {
-  const user = await createUserIfNotExisted(ctx);
-
-  const defaultCategories = [
-    // Expenses
-    { name: 'Food & Dining', type: 'expense', isDefault: true },
-    { name: 'Transport', type: 'expense', isDefault: true },
-    { name: 'Housing', type: 'expense', isDefault: true },
-    { name: 'Shopping', type: 'expense', isDefault: true },
-    // Incomes
-    { name: 'Salary', type: 'income', isDefault: true },
-    { name: 'Gift', type: 'income', isDefault: true },
-    { name: 'Freelance', type: 'income', isDefault: true },
-    { name: 'Investment', type: 'income', isDefault: true },
-  ];
-
-  for (const category of defaultCategories) {
-    await addCategory({
-      telegramId: user.telegramId,
-      name: category.name,
-      type: category.type,
-      isDefault: category.isDefault,
-    });
-  }
+  const user = await getOrCreateUser(ctx.from.id.toString());
+  await ensureDefaultCategories(user.id);
 }
 
 /**
