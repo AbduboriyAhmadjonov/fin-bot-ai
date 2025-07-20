@@ -15,5 +15,8 @@ jobs:
       - name: Install deps
         run: npm ci
 
+      - name: Change directory
+        run: cd /fin-bot/fin-bot-ai/fin-bot-ai
+
       - name: Run
         run: pm2 restart fin-bot-ai
