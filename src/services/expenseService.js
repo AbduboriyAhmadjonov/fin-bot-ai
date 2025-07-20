@@ -1,16 +1,19 @@
-import prisma from '../db/index.js';
+import prisma from '../db/prismaClient.js';
+import { getUserByTelegramId } from './userService.js';
 
-export async function addExpense({ userId, expenses }) {
-  // Validate input
-  console.log('Adding expenses for user:', userId, 'Expenses:', expenses);
+export async function addExpense(telegramId, expenses) {
+  if (!Array.isArray(expenses) || !expenses.length)
+    throw new Error('No expenses');
 
-  return await prisma.expense.createMany({
-    data: expenses.map((exp) => ({
-      userId,
-      amount: exp.amount,
-      categoryId: exp.categoryId || 'Uncategorized',
-      description: exp.description,
-      timestamp: exp.timestamp || new Date(),
+  const user = await getUserByTelegramId(telegramId);
+
+  return prisma.expense.createMany({
+    data: expenses.map((e) => ({
+      userId: user.id,
+      amount: e.amount,
+      description: e.description || null,
+      categoryId: e.categoryId || null,
+      timestamp: e.timestamp || new Date(),
     })),
   });
 }

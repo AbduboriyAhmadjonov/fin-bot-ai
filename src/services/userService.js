@@ -1,4 +1,4 @@
-import prisma from '../db/index.js';
+import prisma from '../db/prismaClient.js';
 
 // CREATE USER
 export async function createUser({
@@ -46,6 +46,11 @@ export async function updateUser(telegramId, updates) {
 
 // DELETE
 export async function deleteUser(telegramId) {
+  const exist = await getUserByTelegramId(telegramId);
+  if (!exist) {
+    throw new Error(`User with telegramId ${telegramId} does not exist.`);
+  }
+
   return await prisma.user.delete({
     where: { telegramId },
   });

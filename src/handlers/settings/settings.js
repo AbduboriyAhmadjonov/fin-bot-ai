@@ -6,12 +6,12 @@ export default async function settingsHandler(bot) {
   });
 
   bot.action('BACK_TO_MAIN_MENU', async (ctx) => {
-    await ctx.answerCbQuery(); // Remove loading spinner
+    await ctx.answerCbQuery();
     await ctx.editMessageText('Back to Main Menu', keyboard.mainMenu);
   });
 
   bot.action('BACK_TO_SETTINGS', async (ctx) => {
-    await ctx.answerCbQuery(); // Remove loading spinner
+    await ctx.answerCbQuery();
     await ctx.editMessageText('Back to Settings', keyboard.settingsKeyboard);
   });
 
@@ -21,7 +21,7 @@ export default async function settingsHandler(bot) {
   });
 
   bot.action('CLOSE_SETTINGS', async (ctx) => {
-    await ctx.answerCbQuery(); // Remove loading spinner
+    await ctx.answerCbQuery();
     await ctx.editMessageText('Settings menu closed.', {
       reply_markup: null,
     });

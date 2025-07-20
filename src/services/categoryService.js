@@ -1,4 +1,4 @@
-import prisma from '../db/index.js';
+import prisma from '../db/prismaClient.js';
 
 export async function addCategory({
   telegramId,
@@ -41,5 +41,27 @@ export async function viewCategories({ userId, type }) {
       type,
     },
     orderBy: { name: 'asc' },
+  });
+}
+
+export async function ensureDefaultCategories(userId) {
+  const existing = await prisma.category.findFirst({
+    where: { userId, isDefault: true },
+  });
+  if (existing) return;
+
+  const defaults = [
+    { name: 'Food & Dining', type: 'expense' },
+    { name: 'Transport', type: 'expense' },
+    { name: 'Housing', type: 'expense' },
+    { name: 'Shopping', type: 'expense' },
+    { name: 'Salary', type: 'income' },
+    { name: 'Gift', type: 'income' },
+    { name: 'Freelance', type: 'income' },
+    { name: 'Investment', type: 'income' },
+  ];
+  await prisma.category.createMany({
+    data: defaults.map((d) => ({ ...d, userId, isDefault: true })),
+    skipDuplicates: true,
   });
 }

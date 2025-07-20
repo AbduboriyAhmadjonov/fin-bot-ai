@@ -1,6 +1,6 @@
-import startHandler from './commands/startHandler.js';
-import incomeHandler from './incomeHandler.js';
-import expenseHandler from './expenseHandler.js';
+import start from './commands/start.js';
+// import incomeHandler from './incomeHandler.js';
+// import expenseHandler from './expenseHandler.js';
 import contactHandler from './contactHandler.js';
 
 // Settings handlers
@@ -14,9 +14,9 @@ import deleteAccountHandler from './settings/deleteAccaunt.js';
 import registerAdminLogin from './adminLogin.js';
 
 export default function registerHandlers(bot) {
-  startHandler(bot);
-  incomeHandler(bot);
-  expenseHandler(bot);
+  start(bot);
+  // incomeHandler(bot);
+  // expenseHandler(bot);
   contactHandler(bot);
 
   // Settings

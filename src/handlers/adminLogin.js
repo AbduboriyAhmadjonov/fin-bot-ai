@@ -1,5 +1,4 @@
 import bcrypt from 'bcryptjs';
-import { Markup } from 'telegraf';
 import dotenv from 'dotenv';
 
 dotenv.config();
