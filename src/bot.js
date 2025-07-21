@@ -6,15 +6,12 @@ import { requireAdmin } from './middleware/adminCheck.js';
 import statsCommand from './handlers/commands/stats.js';
 import stage from './middleware/stage.js';
 
-// Load environment variables
 dotenv.config();
 
-// Environment configuration
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const isDevelopment = NODE_ENV === 'development';
 const isProduction = NODE_ENV === 'production';
 
-// Validate required environment variables
 const requiredEnvVars = ['TELEGRAM_BOT_TOKEN'];
 const missingEnvVars = requiredEnvVars.filter(
   (varName) => !process.env[varName]
@@ -28,16 +25,12 @@ if (missingEnvVars.length > 0) {
   process.exit(1);
 }
 
-// Bot configuration
 const botConfig = {
-  // Enable polling for development, webhook for production
   polling: isDevelopment,
-  // Add other production-specific configurations here
 };
 
 const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN, botConfig);
 
-// Enhanced error handling middleware
 bot.catch((err, ctx) => {
   console.error('❌ Bot error occurred:', {
     error: err.message,
@@ -47,17 +40,14 @@ bot.catch((err, ctx) => {
     update: isDevelopment ? ctx.update : undefined,
   });
 
-  // Send user-friendly error message
   if (ctx.reply) {
     ctx.reply("❌ Xatolik yuz berdi. Iltimos, qayta urinib ko'ring.");
   }
 });
 
-// Middleware: Initialize session
 bot.use(sessionMiddleware);
 bot.use(stage.middleware());
 
-// Development-only middleware for logging
 if (isDevelopment) {
   bot.use((ctx, next) => {
     console.log('🔍 [DEBUG] Update received:', {
@@ -70,7 +60,6 @@ if (isDevelopment) {
   });
 }
 
-// Commands
 bot.command('stats', requireAdmin(), async (ctx) => {
   try {
     const message = await statsCommand(ctx);
@@ -85,10 +74,8 @@ bot.command('stats', requireAdmin(), async (ctx) => {
   }
 });
 
-// Register all other handlers
 registerHandlers(bot);
 
-// Scene handlers with error handling
 bot.hears('➕💸 Add Expense', (ctx) => {
   try {
     ctx.scene.enter('expense-wizard');
@@ -112,7 +99,8 @@ async function setupWebhook() {
   if (!isProduction) return;
 
   const webhookUrl = process.env.WEBHOOK_URL;
-  const webhookPort = process.env.WEBHOOK_PORT || 3000;
+  const webhookPort = process.env.WEBHOOK_PORT;
+  const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
 
   if (!webhookUrl) {
     console.error('❌ WEBHOOK_URL is required for production');
@@ -120,11 +108,9 @@ async function setupWebhook() {
   }
 
   try {
-    // Set webhook
-    await bot.telegram.setWebhook(webhookUrl);
+    await bot.telegram.setWebhook(`${webhookUrl}/bot${telegramBotToken}`);
     console.log(`✅ Webhook set to: ${webhookUrl}`);
 
-    // Start webhook server
     bot.startWebhook('/', null, webhookPort);
     console.log(`✅ Webhook server started on port ${webhookPort}`);
   } catch (error) {
@@ -141,17 +127,18 @@ async function setupWebhook() {
     if (isProduction) {
       await setupWebhook();
     } else {
-      // Development mode - use polling
       await bot.launch({
         polling: true,
-        dropPendingUpdates: true, // Clear pending updates in development
+        dropPendingUpdates: true,
       });
       console.log('✅ Bot started successfully in development mode (polling)');
     }
 
-    // Log environment info
+    const botInfo = await bot.telegram.getMe();
+    const botUsername = botInfo.username || 'unknown';
+
     console.log(`📊 Environment: ${NODE_ENV}`);
-    console.log(`🤖 Bot username: @${bot.botInfo?.username || 'unknown'}`);
+    console.log(`🤖 Bot username: @${botUsername}`);
   } catch (error) {
     console.error('❌ Failed to launch bot:', error);
     process.exit(1);
