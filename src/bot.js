@@ -111,7 +111,7 @@ async function setupWebhook() {
     await bot.telegram.setWebhook(`${webhookUrl}/bot${telegramBotToken}`);
     console.log(`✅ Webhook set to: ${webhookUrl}`);
 
-    bot.startWebhook('/', null, webhookPort);
+    bot.startWebhook(`/bot${telegramBotToken}`, null, webhookPort);
     console.log(`✅ Webhook server started on port ${webhookPort}`);
   } catch (error) {
     console.error('❌ Failed to setup webhook:', error);
