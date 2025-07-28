@@ -146,19 +146,16 @@ async function setupWebhook() {
 })();
 
 // Graceful shutdown
-const gracefulShutdown = (signal) => {
+const gracefulShutdown = async (signal) => {
   console.log(`🛑 Received ${signal}. Starting graceful shutdown...`);
-
-  bot
-    .stop(signal)
-    .then(() => {
-      console.log('✅ Bot stopped gracefully');
-      process.exit(0);
-    })
-    .catch((error) => {
-      console.error('❌ Error during bot shutdown:', error);
-      process.exit(1);
-    });
+  try {
+    await bot.stop(signal);
+    console.log('✅ Bot stopped gracefully');
+    process.exit(0);
+  } catch (err) {
+    console.error('❌ Error during shutdown:', err);
+    process.exit(1);
+  }
 };
 
 process.once('SIGINT', () => gracefulShutdown('SIGINT'));
