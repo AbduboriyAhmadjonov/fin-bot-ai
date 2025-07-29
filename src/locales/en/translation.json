@@ -1,0 +1,6 @@
+{
+  "welcome": "👋 Hello {{name}}!",
+  "add_expense": "➕💸 Add Expense",
+  "add_income": "➕💰 Add Income",
+  "error": "❌ Something went wrong."
+}

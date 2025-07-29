@@ -5,6 +5,7 @@ import sessionMiddleware from './middleware/session.js';
 import { requireAdmin } from './middleware/adminCheck.js';
 import statsCommand from './handlers/commands/stats.js';
 import stage from './middleware/stage.js';
+import i18nMiddleware from './middleware/i18n.js';
 
 dotenv.config();
 
@@ -47,6 +48,7 @@ bot.catch((err, ctx) => {
 
 bot.use(sessionMiddleware);
 bot.use(stage.middleware());
+bot.use(i18nMiddleware);
 
 if (isDevelopment) {
   bot.use((ctx, next) => {
@@ -109,9 +111,19 @@ async function setupWebhook() {
 
   try {
     await bot.telegram.setWebhook(`${webhookUrl}/bot${telegramBotToken}`);
-    console.log(`✅ Webhook set to: ${webhookUrl}`);
 
     bot.startWebhook(`/bot${telegramBotToken}`, null, webhookPort);
+
+    if (!ctx.session.language) {
+      const tgLang = ctx.from.language_code?.slice(0, 2); // "ru", "en", "uz"
+      ctx.session.language = ['uz', 'ru', 'en'].includes(tgLang)
+        ? tgLang
+        : 'uz';
+      ctx.i18n.locale(ctx.session.language);
+    }
+
+    await ctx.reply(ctx.i18n.t('welcome', { name: ctx.from.first_name }));
+    console.log(`✅ Webhook set to: ${webhookUrl}`);
     console.log(`✅ Webhook server started on port ${webhookPort}`);
   } catch (error) {
     console.error('❌ Failed to setup webhook:', error);

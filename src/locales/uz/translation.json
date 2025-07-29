@@ -1,0 +1,6 @@
+{
+  "welcome": "👋 Salom {{name}}!",
+  "add_expense": "➕💸 Xarajat qo'shish",
+  "add_income": "➕💰 Daromad qo'shish",
+  "error": "❌ Xatolik yuz berdi."
+}
