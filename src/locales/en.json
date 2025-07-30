@@ -3,5 +3,10 @@
   "add_expense": "➕💸 Add Expense",
   "add_income": "➕💰 Add Income",
   "error": "❌ Something went wrong.",
-  "income.welcome": "💵 Send your income like:\n`1200000 Salary`\nOr multiple:\n`1200000 Salary, 300000 Freelance`\n\nPress ❌ Cancel to go back."
+  "income.welcome": "💵 Send your income like:\n`1200000 Salary`\nOr multiple:\n`1200000 Salary, 300000 Freelance`\n\nPress ❌ Cancel to go back.",
+  "expense.welcome": "🧾 Send your expenses like:\n`10000 Food, 2000 Transport`\n\nPress ❌ Cancel to go back.",
+  "invalid_format": "❌ Invalid format. Try: `10000 Food, 2000 Taxi`",
+  "back_to_main_menu": "🔙 Back to Main Menu",
+  "expense.saved": "✅ Expenses saved.",
+  "expense.canceled": "❌ Expense entry canceled."
 }

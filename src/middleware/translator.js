@@ -1,4 +1,4 @@
-class SimpleI18n {
+class Translator {
   constructor() {
     this.cache = new Map(); // Stores loaded translations: 'en' -> {key: value}
     this.userLangs = new Map(); // Stores user preferences: userId -> 'en'
@@ -72,22 +72,40 @@ class SimpleI18n {
 }
 
 // Create singleton instance
-export const i18n = new SimpleI18n();
+export const translator = new Translator();
 
-// Telegraf middleware - THIS IS WHERE ctx.t() COMES FROM
-export function i18nMiddleware() {
-  return (ctx, next) => {
-    // Add translation method to context
+export function translatorMiddleware() {
+  return async (ctx, next) => {
+    // Load session language if present
+    const sessionLang = ctx.session?.language;
+
+    if (sessionLang && ctx.from?.id) {
+      const currentLang = translator.getUserLanguage(ctx.from.id);
+      if (sessionLang !== currentLang) {
+        translator.setUserLanguage(ctx.from.id, sessionLang);
+      }
+    }
+
+    // Translation shortcut
     ctx.t = (key, params = {}) => {
-      return i18n.translate(key, ctx.from?.id, params);
+      return translator.translate(key, ctx.from?.id, params);
     };
 
-    // Add language setter to context
+    // Language setter that also updates session
     ctx.setLang = (lang) => {
-      i18n.setUserLanguage(ctx.from?.id, lang);
+      if (!ctx.from?.id || !lang) return;
+
+      const currentLang = translator.getUserLanguage(ctx.from.id);
+
+      // Only update if different
+      if (currentLang !== lang) {
+        translator.setUserLanguage(ctx.from.id, lang);
+        if (ctx.session) {
+          ctx.session.language = lang;
+        }
+      }
     };
 
-    // Continue to next middleware/handler
     return next();
   };
 }

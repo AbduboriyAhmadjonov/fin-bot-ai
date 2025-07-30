@@ -10,23 +10,23 @@ export default async function languageHandler(bot) {
   });
 
   bot.action('LANG_EN', async (ctx) => {
-    // await saveLanguage(ctx.from.id, 'en');
+    ctx.setLang('en'); // updates i18n and session
     await ctx.answerCbQuery();
     await ctx.editMessageText('✅ Language updated to English 🇬🇧');
-    await ctx.replyWithMarkdown('Back to Settings', keyboard.settingsKeyboard); // extra
+    await ctx.replyWithMarkdown('Back to Settings', keyboard.settingsKeyboard);
   });
 
   bot.action('LANG_RU', async (ctx) => {
-    // await saveLanguage(ctx.from.id, 'ru');
+    ctx.setLang('ru');
     await ctx.answerCbQuery();
     await ctx.editMessageText('✅ Язык обновлен на русский 🇷🇺');
-    await ctx.replyWithMarkdown('Back to Settings', keyboard.settingsKeyboard); // extra
+    await ctx.replyWithMarkdown('Back to Settings', keyboard.settingsKeyboard);
   });
 
   bot.action('LANG_UZ', async (ctx) => {
-    // await saveLanguage(ctx.from.id, 'uz');
+    ctx.setLang('uz');
     await ctx.answerCbQuery();
     await ctx.editMessageText("✅ Til o'zbek tiliga o'zgartirildi 🇺🇿");
-    await ctx.replyWithMarkdown('Back to Settings', keyboard.settingsKeyboard); // extra
+    await ctx.replyWithMarkdown('Back to Settings', keyboard.settingsKeyboard);
   });
 }

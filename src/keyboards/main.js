@@ -2,22 +2,24 @@ import { Markup } from 'telegraf';
 
 const keyboard = {
   // Keyboards
-  mainMenu: Markup.keyboard([
-    [
-      Markup.button.callback('➕💸 Add Expense', 'ADD_EXPENSE'),
-      Markup.button.callback('➕💰 Add Income', 'ADD_INCOME'),
-    ],
-    [
-      Markup.button.callback('📊 View Summary', 'VIEW_SUMMARY'),
-      Markup.button.callback('⚙️ Settings', 'SETTINGS'),
-    ],
-  ]).resize(),
+  mainMenu: (t) =>
+    Markup.keyboard([
+      [
+        Markup.button.callback(`➕💸 ${t('add_expense')}`, 'ADD_EXPENSE'), // Add Expense
+        Markup.button.callback(`➕💰 ${t('add_income')}`, 'ADD_INCOME'), // Add Income
+      ],
+      [
+        Markup.button.callback(`📊 ${t('view_summary')}`, 'VIEW_SUMMARY'), // View Summary
+        Markup.button.callback(`⚙️ ${t('settings')}`, 'SETTINGS'), // Settings
+      ],
+    ]).resize(),
 
-  contactRequest: Markup.keyboard([
-    [Markup.button.contactRequest('📱 Share Your Phone Number')],
-  ]).resize(),
+  contactRequest: (t) =>
+    Markup.keyboard([
+      [Markup.button.contactRequest(`📱 ${t('share_phone_number')}`)], // Share Your Phone Number
+    ]).resize(),
 
-  cancelKeyboard: Markup.keyboard([['❌ Cancel']]).resize(),
+  cancelKeyboard: (t) => Markup.keyboard([[`❌ ${t('cancel')}`]]).resize(), // Cancel
 
   removeKeyboard: Markup.removeKeyboard(),
 
@@ -25,40 +27,64 @@ const keyboard = {
    * Settings Keyboards
    */
 
-  settingsKeyboard: Markup.inlineKeyboard([
-    [Markup.button.callback('🌍 Change Language', 'CHANGE_LANGUAGE')],
-    [Markup.button.callback('💵 Change Currency', 'CHANGE_CURRENCY')],
-    [Markup.button.callback('📂 Manage Categories', 'MANAGE_CATEGORIES')],
-    [Markup.button.callback('🗑️ Delete Account', 'DELETE_ACCOUNT')],
-    [Markup.button.callback('❌ Close Settings Menu', 'CLOSE_SETTINGS')],
-  ]).resize(),
+  settingsKeyboard: (t) =>
+    Markup.inlineKeyboard([
+      [Markup.button.callback(`🌍 ${t('change_language')}`, 'CHANGE_LANGUAGE')], // Change Language
+      [Markup.button.callback(`💵 ${t('change_currency')}`, 'CHANGE_CURRENCY')], // Change Currency
+      [
+        Markup.button.callback(
+          `📂 ${t('manage_categories')}`,
+          'MANAGE_CATEGORIES'
+        ),
+      ], // Manage Categories
+      [Markup.button.callback(`🗑️ ${t('delete_account')}`, 'DELETE_ACCOUNT')], // Delete Account
+      [
+        Markup.button.callback(
+          `❌ ${t('close_settings_menu')}`,
+          'CLOSE_SETTINGS'
+        ),
+      ], // Close Settings Menu
+    ]).resize(),
 
-  changeLanguageKeyboard: Markup.inlineKeyboard([
-    [Markup.button.callback("🇺🇿 O'zbekcha", 'LANG_UZ')],
-    [Markup.button.callback('🇷🇺 Русский', 'LANG_RU')],
-    [Markup.button.callback('🇬🇧 English', 'LANG_EN')],
-    [Markup.button.callback('◀️ Back to Settings', 'BACK_TO_SETTINGS')],
-  ]).resize(),
+  changeLanguageKeyboard: (t) =>
+    Markup.inlineKeyboard([
+      [Markup.button.callback("🇺🇿 O'zbekcha", 'LANG_UZ')],
+      [Markup.button.callback('🇷🇺 Русский', 'LANG_RU')],
+      [Markup.button.callback('🇬🇧 English', 'LANG_EN')],
+      [
+        Markup.button.callback(
+          `◀️ ${t('back_to_settings')}`,
+          'BACK_TO_SETTINGS'
+        ),
+      ], // Back to Settings
+    ]).resize(),
 
-  changeCurrencyKeyboard: Markup.inlineKeyboard([
-    [Markup.button.callback('🇺🇿 UZS', 'CURRENCY_UZS')],
-    [Markup.button.callback('🇺🇸 USD', 'CURRENCY_USD')],
-    [Markup.button.callback('🇪🇺 EUR', 'CURRENCY_EUR')],
-    [Markup.button.callback('🇷🇺 RUB', 'CURRENCY_RUB')],
-    [Markup.button.callback('◀️ Back to Settings', 'BACK_TO_SETTINGS')],
-  ]).resize(),
+  changeCurrencyKeyboard: (t) =>
+    Markup.inlineKeyboard([
+      [Markup.button.callback('🇺🇿 UZS', 'CURRENCY_UZS')],
+      [Markup.button.callback('🇺🇸 USD', 'CURRENCY_USD')],
+      [Markup.button.callback('🇪🇺 EUR', 'CURRENCY_EUR')],
+      [Markup.button.callback('🇷🇺 RUB', 'CURRENCY_RUB')],
+      [
+        Markup.button.callback(
+          `◀️ ${t('back_to_settings')}`,
+          'BACK_TO_SETTINGS'
+        ),
+      ], // Back to Settings
+    ]).resize(),
 
   /**
    * Change Category Keyboard
    */
 
-  categoriesKeyboard: Markup.inlineKeyboard([
-    [Markup.button.callback('➕ Add New Category', 'ADD_CATEGORY')],
-    [Markup.button.callback('📝 Edit Category', 'EDIT_CATEGORY')],
-    [Markup.button.callback('📄 View All Categories', 'VIEW_CATEGORY')],
-    [Markup.button.callback('❌ Delete Category', 'DELETE_CATEGORY')],
-    [Markup.button.callback('◀️ Back to Settings', 'BACK_TO_SETTINGS')],
-  ]).resize(),
+  categoriesKeyboard: (t) =>
+    Markup.inlineKeyboard([
+      [Markup.button.callback('➕ Add New Category', 'ADD_CATEGORY')],
+      [Markup.button.callback('📝 Edit Category', 'EDIT_CATEGORY')],
+      [Markup.button.callback('📄 View All Categories', 'VIEW_CATEGORY')],
+      [Markup.button.callback('❌ Delete Category', 'DELETE_CATEGORY')],
+      [Markup.button.callback('◀️ Back to Settings', 'BACK_TO_SETTINGS')],
+    ]).resize(),
 
   backToCategoriesKeyboard: Markup.inlineKeyboard([
     [Markup.button.callback('◀️ Back to Categories', 'BACK_TO_CATEGORIES')],

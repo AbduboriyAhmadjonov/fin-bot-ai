@@ -5,7 +5,7 @@ export default session({
     isAdmin: false,
     state: null,
     currency: null,
-    language: null,
+    language: 'en',
     onboardingStep: null,
   }),
 });

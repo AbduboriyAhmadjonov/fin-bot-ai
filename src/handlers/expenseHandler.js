@@ -10,10 +10,11 @@ export const expenseScene = new WizardScene(
   // Step 0 – ask for input
   async (ctx) => {
     ctx.session.expensesToConfirm = [];
-    await ctx.reply(
-      '🧾 Send your expenses like:\n`10000 Food, 2000 Transport`\n\nPress ❌ Cancel to go back.',
-      keyboard.cancelKeyboard
-    );
+    // await ctx.reply(
+    //   '🧾 Send your expenses like:\n`10000 Food, 2000 Transport`\n\nPress ❌ Cancel to go back.',
+    //   keyboard.cancelKeyboard
+    // );
+    await ctx.reply(await ctx.t('expense.welcome'), keyboard.cancelKeyboard);
     return ctx.wizard.next(); // move to step 1
   },
 
@@ -39,7 +40,8 @@ export const expenseScene = new WizardScene(
       .filter((e) => !isNaN(e.amount) && e.amount > 0);
 
     if (!entries.length) {
-      await ctx.reply('❌ Invalid format. Try: `10000 Food, 2000 Taxi`');
+      // await ctx.reply('❌ Invalid format. Try: `10000 Food, 2000 Taxi`');
+      await ctx.reply(await ctx.t('invalid_format'));
       return; // stay on the same step
     }
 
@@ -71,11 +73,17 @@ export const expenseScene = new WizardScene(
     if (data === 'CONFIRM_EXPENSES') {
       const userId = ctx.from.id.toString();
       await addExpense(userId, ctx.session.expensesToConfirm);
-      await ctx.editMessageText('✅ Expenses saved.');
-      await ctx.reply('Back to Main Menu.', keyboard.mainMenu);
+      // await ctx.editMessageText('✅ Expenses saved.');
+      await ctx.editMessageText(await ctx.t('expense.saved'));
+      // await ctx.reply('Back to Main Menu.', keyboard.mainMenu);
+      await ctx.reply(await ctx.t('back_to_main_menu'), keyboard.mainMenu);
     } else if (data === 'CANCEL_EXPENSES') {
-      await ctx.editMessageText('❌ Expense entry canceled.');
-      await ctx.reply('Back to Main Menu.', keyboard.mainMenu);
+      // await ctx.editMessageText('❌ Expense entry canceled.');
+      await ctx.editMessageText(
+        await ctx.t('expense.canceled'),
+        keyboard.mainMenu
+      );
+      await ctx.reply(await ctx.t('back_to_main_menu'), keyboard.mainMenu);
     }
 
     return ctx.scene.leave();

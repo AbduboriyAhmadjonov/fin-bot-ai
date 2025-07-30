@@ -3,5 +3,9 @@
   "add_expense": "➕💸 Xarajat qo'shish",
   "add_income": "➕💰 Daromad qo'shish",
   "error": "❌ Xatolik yuz berdi.",
-  "income.welcome": "💵 Daromadingizni quyidagi formatda yuboring:\n`1200000 Ish haqi`\nYoki bir nechta:\n`1200000 Ish haqi, 300000 Frilanser`\n\nOrqaga qaytish uchun ❌ Bekor qilish tugmasini bosing."
+  "income.welcome": "💵 Daromadingizni quyidagi formatda yuboring:\n`1200000 Ish haqi`\nYoki bir nechta:\n`1200000 Ish haqi, 300000 Frilanser`\n\nOrqaga qaytish uchun ❌ Bekor qilish tugmasini bosing.",
+  "expense.welcome": "🧾 Xarajatlaringizni quyidagi formatda yuboring:\n`10000 Ovqat, 2000 Transport`\n\nOrqaga qaytish uchun ❌ Bekor qilish tugmasini bosing.",
+  "invalid_format": "❌ Noto'g'ri format. Iltimos, quyidagi formatda yuboring: `10000 Ovqat, 2000 Taksi`",
+  "back_to_main_menu": "🔙 Asosiy menuga qaytish",
+  "expense.canceled": "❌ Xarajat kiritilishi bekor qilindi."
 }
