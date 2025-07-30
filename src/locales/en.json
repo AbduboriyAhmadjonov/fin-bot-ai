@@ -8,5 +8,10 @@
   "invalid_format": "❌ Invalid format. Try: `10000 Food, 2000 Taxi`",
   "back_to_main_menu": "🔙 Back to Main Menu",
   "expense.saved": "✅ Expenses saved.",
-  "expense.canceled": "❌ Expense entry canceled."
+  "expense.canceled": "❌ Expense entry canceled.",
+  "change_language": "Change Language",
+  "change_currency": "Change Currency",
+  "manage_categories": "Manage Categories",
+  "delete_account": "Delete Account",
+  "close_settings_menu": "Close Settings Menu"
 }

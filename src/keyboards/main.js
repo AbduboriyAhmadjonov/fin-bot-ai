@@ -2,24 +2,25 @@ import { Markup } from 'telegraf';
 
 const keyboard = {
   // Keyboards
-  mainMenu: (t) =>
+  mainMenu: async (t) =>
     Markup.keyboard([
       [
-        Markup.button.callback(`➕💸 ${t('add_expense')}`, 'ADD_EXPENSE'), // Add Expense
-        Markup.button.callback(`➕💰 ${t('add_income')}`, 'ADD_INCOME'), // Add Income
+        Markup.button.callback(`➕💸 ${await t('add_expense')}`, 'ADD_EXPENSE'), // Add Expense
+        Markup.button.callback(`➕💰 ${await t('add_income')}`, 'ADD_INCOME'), // Add Income
       ],
       [
-        Markup.button.callback(`📊 ${t('view_summary')}`, 'VIEW_SUMMARY'), // View Summary
-        Markup.button.callback(`⚙️ ${t('settings')}`, 'SETTINGS'), // Settings
+        Markup.button.callback(`📊 ${await t('view_summary')}`, 'VIEW_SUMMARY'), // View Summary
+        Markup.button.callback(`⚙️ ${await t('settings')}`, 'SETTINGS'), // Settings
       ],
     ]).resize(),
 
-  contactRequest: (t) =>
+  contactRequest: async (t) =>
     Markup.keyboard([
-      [Markup.button.contactRequest(`📱 ${t('share_phone_number')}`)], // Share Your Phone Number
+      [Markup.button.contactRequest(`📱 ${await t('share_phone_number')}`)], // Share Your Phone Number
     ]).resize(),
 
-  cancelKeyboard: (t) => Markup.keyboard([[`❌ ${t('cancel')}`]]).resize(), // Cancel
+  cancelKeyboard: async (t) =>
+    Markup.keyboard([[`❌ ${await t('cancel')}`]]).resize(), // Cancel
 
   removeKeyboard: Markup.removeKeyboard(),
 
@@ -27,39 +28,54 @@ const keyboard = {
    * Settings Keyboards
    */
 
-  settingsKeyboard: (t) =>
+  settingsKeyboard: async (t) =>
     Markup.inlineKeyboard([
-      [Markup.button.callback(`🌍 ${t('change_language')}`, 'CHANGE_LANGUAGE')], // Change Language
-      [Markup.button.callback(`💵 ${t('change_currency')}`, 'CHANGE_CURRENCY')], // Change Currency
       [
         Markup.button.callback(
-          `📂 ${t('manage_categories')}`,
+          `🌍 ${await t('change_language')}`,
+          'CHANGE_LANGUAGE'
+        ),
+      ], // Change Language
+      [
+        Markup.button.callback(
+          `💵 ${await t('change_currency')}`,
+          'CHANGE_CURRENCY'
+        ),
+      ], // Change Currency
+      [
+        Markup.button.callback(
+          `📂 ${await t('manage_categories')}`,
           'MANAGE_CATEGORIES'
         ),
       ], // Manage Categories
-      [Markup.button.callback(`🗑️ ${t('delete_account')}`, 'DELETE_ACCOUNT')], // Delete Account
       [
         Markup.button.callback(
-          `❌ ${t('close_settings_menu')}`,
+          `🗑️ ${await t('delete_account')}`,
+          'DELETE_ACCOUNT'
+        ),
+      ], // Delete Account
+      [
+        Markup.button.callback(
+          `❌ ${await t('close_settings_menu')}`,
           'CLOSE_SETTINGS'
         ),
       ], // Close Settings Menu
     ]).resize(),
 
-  changeLanguageKeyboard: (t) =>
+  changeLanguageKeyboard: async (t) =>
     Markup.inlineKeyboard([
       [Markup.button.callback("🇺🇿 O'zbekcha", 'LANG_UZ')],
       [Markup.button.callback('🇷🇺 Русский', 'LANG_RU')],
       [Markup.button.callback('🇬🇧 English', 'LANG_EN')],
       [
         Markup.button.callback(
-          `◀️ ${t('back_to_settings')}`,
+          `◀️ ${await t('back_to_settings')}`,
           'BACK_TO_SETTINGS'
         ),
       ], // Back to Settings
     ]).resize(),
 
-  changeCurrencyKeyboard: (t) =>
+  changeCurrencyKeyboard: async (t) =>
     Markup.inlineKeyboard([
       [Markup.button.callback('🇺🇿 UZS', 'CURRENCY_UZS')],
       [Markup.button.callback('🇺🇸 USD', 'CURRENCY_USD')],
@@ -67,7 +83,7 @@ const keyboard = {
       [Markup.button.callback('🇷🇺 RUB', 'CURRENCY_RUB')],
       [
         Markup.button.callback(
-          `◀️ ${t('back_to_settings')}`,
+          `◀️ ${await t('back_to_settings')}`,
           'BACK_TO_SETTINGS'
         ),
       ], // Back to Settings
@@ -77,7 +93,7 @@ const keyboard = {
    * Change Category Keyboard
    */
 
-  categoriesKeyboard: (t) =>
+  categoriesKeyboard: async (t) =>
     Markup.inlineKeyboard([
       [Markup.button.callback('➕ Add New Category', 'ADD_CATEGORY')],
       [Markup.button.callback('📝 Edit Category', 'EDIT_CATEGORY')],

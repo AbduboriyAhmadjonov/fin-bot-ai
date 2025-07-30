@@ -7,5 +7,7 @@
   "expense.welcome": "🧾 Xarajatlaringizni quyidagi formatda yuboring:\n`10000 Ovqat, 2000 Transport`\n\nOrqaga qaytish uchun ❌ Bekor qilish tugmasini bosing.",
   "invalid_format": "❌ Noto'g'ri format. Iltimos, quyidagi formatda yuboring: `10000 Ovqat, 2000 Taksi`",
   "back_to_main_menu": "🔙 Asosiy menuga qaytish",
-  "expense.canceled": "❌ Xarajat kiritilishi bekor qilindi."
+  "expense.saved": "✅ Xarajatlar saqlandi.",
+  "expense.canceled": "❌ Xarajat kiritilishi bekor qilindi.",
+  "change_language": "Tilni o'zgartirish"
 }
