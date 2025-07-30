@@ -1,0 +1,7 @@
+{
+  "welcome": "👋 Hello {{name}}!",
+  "add_expense": "➕💸 Add Expense",
+  "add_income": "➕💰 Add Income",
+  "error": "❌ Something went wrong.",
+  "income.welcome": "💵 Send your income like:\n`1200000 Salary`\nOr multiple:\n`1200000 Salary, 300000 Freelance`\n\nPress ❌ Cancel to go back."
+}

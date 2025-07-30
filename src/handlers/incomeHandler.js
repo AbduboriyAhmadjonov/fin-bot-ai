@@ -10,10 +10,11 @@ export const incomeScene = new WizardScene(
   /* Step 0 – ask for data */
   async (ctx) => {
     ctx.session.incomesToConfirm = [];
-    await ctx.reply(
-      '💵 Send your income like:\n`1200000 Salary`\nOr multiple:\n`1200000 Salary, 300000 Freelance`\n\nPress ❌ Cancel to go back.',
-      keyboard.cancelKeyboard
-    );
+    // await ctx.reply(
+    //   '💵 Send your income like:\n`1200000 Salary`\nOr multiple:\n`1200000 Salary, 300000 Freelance`\n\nPress ❌ Cancel to go back.',
+    //   keyboard.cancelKeyboard
+    // );
+    ctx.reply(await ctx.t('income.welcome'), keyboard.cancelKeyboard);
     return ctx.wizard.next();
   },
 

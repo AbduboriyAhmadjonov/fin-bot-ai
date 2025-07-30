@@ -5,7 +5,7 @@ import sessionMiddleware from './middleware/session.js';
 import { requireAdmin } from './middleware/adminCheck.js';
 import statsCommand from './handlers/commands/stats.js';
 import stage from './middleware/stage.js';
-import i18nMiddleware from './middleware/i18n.js';
+import { i18nMiddleware } from './middleware/i18n.js'; // Import the middleware
 
 dotenv.config();
 
@@ -48,7 +48,7 @@ bot.catch((err, ctx) => {
 
 bot.use(sessionMiddleware);
 bot.use(stage.middleware());
-bot.use(i18nMiddleware);
+bot.use(i18nMiddleware()); // Use the i18n middleware
 
 if (isDevelopment) {
   bot.use((ctx, next) => {
