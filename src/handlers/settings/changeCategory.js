@@ -105,7 +105,7 @@ export default async function categoryHandler(bot) {
 
     await ctx.editMessageText(message, {
       parse_mode: 'Markdown',
-      reply_markup: keyboard.backToCategoriesKeyboard.reply_markup,
+      reply_markup: await keyboard.backToCategoriesKeyboard(ctx.t),
     });
   });
 

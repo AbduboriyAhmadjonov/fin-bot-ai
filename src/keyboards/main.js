@@ -95,59 +95,157 @@ const keyboard = {
 
   categoriesKeyboard: async (t) =>
     Markup.inlineKeyboard([
-      [Markup.button.callback('➕ Add New Category', 'ADD_CATEGORY')],
-      [Markup.button.callback('📝 Edit Category', 'EDIT_CATEGORY')],
-      [Markup.button.callback('📄 View All Categories', 'VIEW_CATEGORY')],
-      [Markup.button.callback('❌ Delete Category', 'DELETE_CATEGORY')],
-      [Markup.button.callback('◀️ Back to Settings', 'BACK_TO_SETTINGS')],
+      [
+        Markup.button.callback(
+          `➕ ${await t('add_new_category')}`,
+          'ADD_CATEGORY'
+        ),
+      ],
+      [
+        Markup.button.callback(
+          `📝 ${await t('edit_category')}`,
+          'EDIT_CATEGORY'
+        ),
+      ],
+      [
+        Markup.button.callback(
+          `📄 ${await t('view_all_categories')}`,
+          'VIEW_CATEGORY'
+        ),
+      ],
+      [
+        Markup.button.callback(
+          `❌ ${await t('delete_category')}`,
+          'DELETE_CATEGORY'
+        ),
+      ],
+      [
+        Markup.button.callback(
+          `◀️ ${await t('back_to_settings')}`,
+          'BACK_TO_SETTINGS'
+        ),
+      ],
     ]).resize(),
 
-  backToCategoriesKeyboard: Markup.inlineKeyboard([
-    [Markup.button.callback('◀️ Back to Categories', 'BACK_TO_CATEGORIES')],
-  ]).resize(),
+  backToCategoriesKeyboard: async (t) =>
+    Markup.inlineKeyboard([
+      [
+        Markup.button.callback(
+          `◀️ ${await t('back_to_categories')}`,
+          'BACK_TO_CATEGORIES'
+        ),
+      ],
+    ]).resize(),
 
-  addNewCategoryKeyboard: Markup.inlineKeyboard([
-    [Markup.button.callback('🟢 Income Category', 'ADD_NEW_INCOME_CATEGORY')],
-    [Markup.button.callback('🔴 Expense Category', 'ADD_NEW_EXPENSE_CATEGORY')],
-    [Markup.button.callback('◀️ Back to Categories', 'BACK_TO_CATEGORIES')],
-  ]).resize(),
+  addNewCategoryKeyboard: async (t) =>
+    Markup.inlineKeyboard([
+      [
+        Markup.button.callback(
+          `🟢 ${await t('income_category')}`,
+          'ADD_NEW_INCOME_CATEGORY'
+        ),
+      ],
+      [
+        Markup.button.callback(
+          `🔴 ${await t('expense_category')}`,
+          'ADD_NEW_EXPENSE_CATEGORY'
+        ),
+      ],
+      [
+        Markup.button.callback(
+          `◀️ ${await t('back_to_categories')}`,
+          'BACK_TO_CATEGORIES'
+        ),
+      ],
+    ]).resize(),
 
-  editCategoryKeyboard: Markup.inlineKeyboard([
-    [Markup.button.callback('🟢 Income Category', 'EDIT_INCOME_CATEGORY')],
-    [Markup.button.callback('🔴 Expense Category', 'EDIT_EXPENSE_CATEGORY')],
-    [Markup.button.callback('◀️ Back to Categories', 'BACK_TO_CATEGORIES')],
-  ]).resize(),
+  editCategoryKeyboard: async (t) =>
+    Markup.inlineKeyboard([
+      [
+        Markup.button.callback(
+          `🟢 ${await t('income_category')}`,
+          'EDIT_INCOME_CATEGORY'
+        ),
+      ],
+      [
+        Markup.button.callback(
+          `🔴 ${await t('expense_category')}`,
+          'EDIT_EXPENSE_CATEGORY'
+        ),
+      ],
+      [
+        Markup.button.callback(
+          `◀️ ${await t('back_to_categories')}`,
+          'BACK_TO_CATEGORIES'
+        ),
+      ],
+    ]).resize(),
 
-  editCategoryKeyboard: Markup.inlineKeyboard([
-    [Markup.button.callback('🟢 Income Category', 'EDIT_INCOME_CATEGORY')],
-    [Markup.button.callback('🔴 Expense Category', 'EDIT_EXPENSE_CATEGORY')],
-    [Markup.button.callback('◀️ Back to Categories', 'BACK_TO_SETTINGS')],
-  ]).resize(),
+  editCategoryKeyboard: async (t) =>
+    Markup.inlineKeyboard([
+      [
+        Markup.button.callback(
+          `🟢 ${await t('income_category')}`,
+          'EDIT_INCOME_CATEGORY'
+        ),
+      ],
+      [
+        Markup.button.callback(
+          `🔴 ${await t('expense_category')}`,
+          'EDIT_EXPENSE_CATEGORY'
+        ),
+      ],
+      [
+        Markup.button.callback(
+          `◀️ ${await t('back_to_categories')}`,
+          'BACK_TO_SETTINGS'
+        ),
+      ],
+    ]).resize(),
 
-  editCategoryKeyboard: Markup.inlineKeyboard([
-    [Markup.button.callback('🟢 Income Category', 'EDIT_INCOME_CATEGORY')],
-    [Markup.button.callback('🔴 Expense Category', 'EDIT_EXPENSE_CATEGORY')],
-    [Markup.button.callback('◀️ Back to Categories', 'BACK_TO_SETTINGS')],
-  ]).resize(),
+  editCategoryKeyboard: async (t) =>
+    Markup.inlineKeyboard([
+      [
+        Markup.button.callback(
+          `🟢 ${await t('income_category')}`,
+          'EDIT_INCOME_CATEGORY'
+        ),
+      ],
+      [
+        Markup.button.callback(
+          `🔴 ${await t('expense_category')}`,
+          'EDIT_EXPENSE_CATEGORY'
+        ),
+      ],
+      [
+        Markup.button.callback(
+          `◀️ ${await t('back_to_categories')}`,
+          'BACK_TO_SETTINGS'
+        ),
+      ],
+    ]).resize(),
 
   /**
    * Confirmation Keyboards
    */
 
-  confirmOrCancelExpenses: Markup.inlineKeyboard([
-    [Markup.button.callback('✅ Confirm', 'CONFIRM_EXPENSES')],
-    [Markup.button.callback('❌ Cancel', 'CANCEL_EXPENSES')],
-  ]).resize(),
+  confirmOrCancelExpenses: async (t) =>
+    Markup.inlineKeyboard([
+      [Markup.button.callback(await t('confirm'), 'CONFIRM_EXPENSES')],
+      [Markup.button.callback(await t('cancel'), 'CANCEL_EXPENSES')],
+    ]).resize(),
 
-  confirmOrCancelIncomes: Markup.inlineKeyboard([
-    [Markup.button.callback('✅ Confirm', 'CONFIRM_INCOME')],
-    [Markup.button.callback('❌ Cancel', 'CANCEL_INCOME')],
-  ]).resize(),
+  confirmOrCancelIncomes: async (t) =>
+    Markup.inlineKeyboard([
+      [Markup.button.callback(await t('confirm'), 'CONFIRM_INCOME')],
+      [Markup.button.callback(await t('cancel'), 'CANCEL_INCOME')],
+    ]).resize(),
 
-  deleteAccountKeyboard: Markup.inlineKeyboard([
-    [Markup.button.callback('✅ Yes, delete', 'CONFIRM_DELETE')],
-    [Markup.button.callback('❌ Cancel', 'CANCEL_DELETE')],
-  ]).resize(),
+  deleteAccountKeyboard: async (t) =>
+    Markup.inlineKeyboard([
+      [Markup.button.callback(await t('yes_delete'), 'CONFIRM_DELETE')],
+      [Markup.button.callback(await t('cancel'), 'CANCEL_DELETE')],
+    ]).resize(),
 };
 
 export default keyboard;

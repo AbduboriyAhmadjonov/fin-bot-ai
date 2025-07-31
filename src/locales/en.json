@@ -13,5 +13,17 @@
   "change_currency": "Change Currency",
   "manage_categories": "Manage Categories",
   "delete_account": "Delete Account",
-  "close_settings_menu": "Close Settings Menu"
+  "close_settings_menu": "Close Settings Menu",
+  "add_new_category": "Add New Category",
+  "edit_category": "Edit Category",
+  "view_all_categories": "View All Categories",
+  "delete_category": "Delete Category",
+  "back_to_settings": "Back to Settings",
+  "back_to_categories": "Back to Categories",
+  "income_category": "Income Category",
+  "expense_category": "Expense Category",
+  "confirm": "✅ Confirm",
+  "cancel": "❌ Cancel",
+  "yes_delete": "✅ Yes, delete",
+  "select_your_preferred_currency": "Please select your preferred currency:"
 }

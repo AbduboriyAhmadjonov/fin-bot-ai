@@ -5,7 +5,7 @@ export default async function languageHandler(bot) {
     await ctx.answerCbQuery();
     await ctx.editMessageText(
       'Please select your preferred language:',
-      keyboard.changeLanguageKeyboard
+      await keyboard.changeLanguageKeyboard(ctx.t)
     );
   });
 
@@ -13,20 +13,29 @@ export default async function languageHandler(bot) {
     ctx.setLang('en'); // updates i18n and session
     await ctx.answerCbQuery();
     await ctx.editMessageText('✅ Language updated to English 🇬🇧');
-    await ctx.replyWithMarkdown('Back to Settings', keyboard.settingsKeyboard);
+    await ctx.replyWithMarkdown(
+      'Back to Settings',
+      await keyboard.settingsKeyboard(ctx.t)
+    );
   });
 
   bot.action('LANG_RU', async (ctx) => {
     ctx.setLang('ru');
     await ctx.answerCbQuery();
     await ctx.editMessageText('✅ Язык обновлен на русский 🇷🇺');
-    await ctx.replyWithMarkdown('Back to Settings', keyboard.settingsKeyboard);
+    await ctx.replyWithMarkdown(
+      'Back to Settings',
+      await keyboard.settingsKeyboard(ctx.t)
+    );
   });
 
   bot.action('LANG_UZ', async (ctx) => {
     ctx.setLang('uz');
     await ctx.answerCbQuery();
     await ctx.editMessageText("✅ Til o'zbek tiliga o'zgartirildi 🇺🇿");
-    await ctx.replyWithMarkdown('Back to Settings', keyboard.settingsKeyboard);
+    await ctx.replyWithMarkdown(
+      'Back to Settings',
+      await keyboard.settingsKeyboard(ctx.t)
+    );
   });
 }

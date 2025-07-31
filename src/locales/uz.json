@@ -9,5 +9,21 @@
   "back_to_main_menu": "🔙 Asosiy menuga qaytish",
   "expense.saved": "✅ Xarajatlar saqlandi.",
   "expense.canceled": "❌ Xarajat kiritilishi bekor qilindi.",
-  "change_language": "Tilni o'zgartirish"
+  "change_language": "Tilni o'zgartirish",
+  "change_currency": "Valyutani o'zgartirish",
+  "manage_categories": "Kategoriyalarni boshqarish",
+  "delete_account": "Hisobni o'chirish",
+  "close_settings_menu": "Sozlamalar menyusini yopish",
+  "add_new_category": "Yangi kategoriya qo'shish",
+  "edit_category": "Kategoriya tahrirlash",
+  "view_all_categories": "Barcha kategoriyalarni ko'rish",
+  "delete_category": "Kategoriya o'chirish",
+  "back_to_settings": "Sozlamalarga qaytish",
+  "back_to_categories": "Kategoriyalarga qaytish",
+  "income_category": "Daromad kategoriyasi",
+  "expense_category": "Xarajat kategoriyasi",
+  "confirm": "✅ Tasdiqlash",
+  "cancel": "❌ Bekor qilish",
+  "yes_delete": "✅ Ha, o'chirish",
+  "select_your_preferred_currency": "Iltimos, o'zingizning afzal valyutangizni tanlang:"
 }

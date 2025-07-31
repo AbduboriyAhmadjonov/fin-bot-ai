@@ -1,7 +1,10 @@
 import keyboard from '../../keyboards/main.js';
 
 export default async function settingsCommand(bot) {
-  bot.command('settings', (ctx) => {
-    ctx.reply('What would you like to do?', keyboard.settingsKeyboard);
+  bot.command('settings', async (ctx) => {
+    ctx.reply(
+      await ctx.t('What would you like to do?'),
+      await keyboard.settingsKeyboard(ctx.t)
+    );
   });
 }

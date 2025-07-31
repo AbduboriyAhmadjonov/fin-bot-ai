@@ -9,5 +9,21 @@
   "back_to_main_menu": "🔙 Назад в главное меню",
   "expense.saved": "✅ Расходы сохранены.",
   "expense.canceled": "❌ Запись расхода отменена.",
-  "change_language": "Изменить язык"
+  "change_language": "Изменить язык",
+  "change_currency": "Изменить валюту",
+  "manage_categories": "Управление категориями",
+  "delete_account": "Удалить аккаунт",
+  "close_settings_menu": "Закрыть меню настроек",
+  "add_new_category": "Добавить новую категорию",
+  "edit_category": "Редактировать категорию",
+  "view_all_categories": "Просмотреть все категории",
+  "delete_category": "Удалить категорию",
+  "back_to_settings": "Назад к настройкам",
+  "back_to_categories": "Назад к категориям",
+  "income_category": "Категория дохода",
+  "expense_category": "Категория расхода",
+  "confirm": "✅ Подтвердить",
+  "cancel": "❌ Отмена",
+  "yes_delete": "✅ Да, удалить",
+  "select_your_preferred_currency": "Пожалуйста, выберите вашу предпочитаемую валюту:"
 }
