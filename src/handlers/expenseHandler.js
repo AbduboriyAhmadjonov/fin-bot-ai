@@ -10,18 +10,20 @@ export const expenseScene = new WizardScene(
   // Step 0 – ask for input
   async (ctx) => {
     ctx.session.expensesToConfirm = [];
-    // await ctx.reply(
-    //   '🧾 Send your expenses like:\n`10000 Food, 2000 Transport`\n\nPress ❌ Cancel to go back.',
-    //   keyboard.cancelKeyboard
-    // );
-    await ctx.reply(await ctx.t('expense.welcome'), keyboard.cancelKeyboard);
+    await ctx.reply(
+      await ctx.t('expense.welcome'),
+      await keyboard.cancelKeyboard(ctx.t)
+    );
     return ctx.wizard.next(); // move to step 1
   },
 
   // Step 1 – parse & confirm
   async (ctx) => {
     if (ctx.message?.text === '❌ Cancel') {
-      await ctx.reply('❌ Expense entry canceled.', keyboard.mainMenu);
+      await ctx.reply(
+        '❌ Expense entry canceled.',
+        await keyboard.mainMenu(ctx.t)
+      );
       return ctx.scene.leave();
     }
 
@@ -40,7 +42,6 @@ export const expenseScene = new WizardScene(
       .filter((e) => !isNaN(e.amount) && e.amount > 0);
 
     if (!entries.length) {
-      // await ctx.reply('❌ Invalid format. Try: `10000 Food, 2000 Taxi`');
       await ctx.reply(await ctx.t('invalid_format'));
       return; // stay on the same step
     }
@@ -73,17 +74,20 @@ export const expenseScene = new WizardScene(
     if (data === 'CONFIRM_EXPENSES') {
       const userId = ctx.from.id.toString();
       await addExpense(userId, ctx.session.expensesToConfirm);
-      // await ctx.editMessageText('✅ Expenses saved.');
       await ctx.editMessageText(await ctx.t('expense.saved'));
-      // await ctx.reply('Back to Main Menu.', keyboard.mainMenu);
-      await ctx.reply(await ctx.t('back_to_main_menu'), keyboard.mainMenu);
+      await ctx.reply(
+        await ctx.t('back_to_main_menu'),
+        await keyboard.mainMenu(ctx.t)
+      );
     } else if (data === 'CANCEL_EXPENSES') {
-      // await ctx.editMessageText('❌ Expense entry canceled.');
       await ctx.editMessageText(
         await ctx.t('expense.canceled'),
-        keyboard.mainMenu
+        await keyboard.mainMenu(ctx.t)
       );
-      await ctx.reply(await ctx.t('back_to_main_menu'), keyboard.mainMenu);
+      await ctx.reply(
+        await ctx.t('back_to_main_menu'),
+        await keyboard.mainMenu(ctx.t)
+      );
     }
 
     return ctx.scene.leave();

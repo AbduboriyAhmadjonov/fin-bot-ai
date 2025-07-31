@@ -29,7 +29,7 @@ _You can say something like:_
 Let\’s take control of your money \– one message at a time 💪 
 Let\’s start by sending your phone number so I can help you better 📱
     `,
-      keyboard.contactRequest
+      await keyboard.contactRequest(ctx.t)
     );
   });
 }

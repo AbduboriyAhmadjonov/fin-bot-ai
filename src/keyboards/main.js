@@ -5,12 +5,12 @@ const keyboard = {
   mainMenu: async (t) =>
     Markup.keyboard([
       [
-        Markup.button.callback(`➕💸 ${await t('add_expense')}`, 'ADD_EXPENSE'), // Add Expense
-        Markup.button.callback(`➕💰 ${await t('add_income')}`, 'ADD_INCOME'), // Add Income
+        Markup.button.callback(await t('add_expense'), 'ADD_EXPENSE'), // Add Expense
+        Markup.button.callback(await t('add_income'), 'ADD_INCOME'), // Add Income
       ],
       [
-        Markup.button.callback(`📊 ${await t('view_summary')}`, 'VIEW_SUMMARY'), // View Summary
-        Markup.button.callback(`⚙️ ${await t('settings')}`, 'SETTINGS'), // Settings
+        Markup.button.callback(await t('view_summary'), 'VIEW_SUMMARY'), // View Summary
+        Markup.button.callback(await t('settings'), 'SETTINGS'), // Settings
       ],
     ]).resize(),
 
@@ -67,12 +67,7 @@ const keyboard = {
       [Markup.button.callback("🇺🇿 O'zbekcha", 'LANG_UZ')],
       [Markup.button.callback('🇷🇺 Русский', 'LANG_RU')],
       [Markup.button.callback('🇬🇧 English', 'LANG_EN')],
-      [
-        Markup.button.callback(
-          `◀️ ${await t('back_to_settings')}`,
-          'BACK_TO_SETTINGS'
-        ),
-      ], // Back to Settings
+      [Markup.button.callback(await t('back_to_settings'), 'BACK_TO_SETTINGS')],
     ]).resize(),
 
   changeCurrencyKeyboard: async (t) =>
@@ -81,12 +76,7 @@ const keyboard = {
       [Markup.button.callback('🇺🇸 USD', 'CURRENCY_USD')],
       [Markup.button.callback('🇪🇺 EUR', 'CURRENCY_EUR')],
       [Markup.button.callback('🇷🇺 RUB', 'CURRENCY_RUB')],
-      [
-        Markup.button.callback(
-          `◀️ ${await t('back_to_settings')}`,
-          'BACK_TO_SETTINGS'
-        ),
-      ], // Back to Settings
+      [Markup.button.callback(await t('back_to_settings'), 'BACK_TO_SETTINGS')],
     ]).resize(),
 
   /**
@@ -119,19 +109,14 @@ const keyboard = {
           'DELETE_CATEGORY'
         ),
       ],
-      [
-        Markup.button.callback(
-          `◀️ ${await t('back_to_settings')}`,
-          'BACK_TO_SETTINGS'
-        ),
-      ],
+      [Markup.button.callback(await t('back_to_settings'), 'BACK_TO_SETTINGS')],
     ]).resize(),
 
   backToCategoriesKeyboard: async (t) =>
     Markup.inlineKeyboard([
       [
         Markup.button.callback(
-          `◀️ ${await t('back_to_categories')}`,
+          await t('back_to_categories'),
           'BACK_TO_CATEGORIES'
         ),
       ],
@@ -141,19 +126,19 @@ const keyboard = {
     Markup.inlineKeyboard([
       [
         Markup.button.callback(
-          `🟢 ${await t('income_category')}`,
+          await t('income_category'),
           'ADD_NEW_INCOME_CATEGORY'
         ),
       ],
       [
         Markup.button.callback(
-          `🔴 ${await t('expense_category')}`,
+          await t('expense_category'),
           'ADD_NEW_EXPENSE_CATEGORY'
         ),
       ],
       [
         Markup.button.callback(
-          `◀️ ${await t('back_to_categories')}`,
+          await t('back_to_categories'),
           'BACK_TO_CATEGORIES'
         ),
       ],
@@ -163,19 +148,19 @@ const keyboard = {
     Markup.inlineKeyboard([
       [
         Markup.button.callback(
-          `🟢 ${await t('income_category')}`,
+          await t('income_category'),
           'EDIT_INCOME_CATEGORY'
         ),
       ],
       [
         Markup.button.callback(
-          `🔴 ${await t('expense_category')}`,
+          await t('expense_category'),
           'EDIT_EXPENSE_CATEGORY'
         ),
       ],
       [
         Markup.button.callback(
-          `◀️ ${await t('back_to_categories')}`,
+          await t('back_to_categories'),
           'BACK_TO_CATEGORIES'
         ),
       ],
@@ -185,19 +170,19 @@ const keyboard = {
     Markup.inlineKeyboard([
       [
         Markup.button.callback(
-          `🟢 ${await t('income_category')}`,
+          await t('income_category'),
           'EDIT_INCOME_CATEGORY'
         ),
       ],
       [
         Markup.button.callback(
-          `🔴 ${await t('expense_category')}`,
+          await t('expense_category'),
           'EDIT_EXPENSE_CATEGORY'
         ),
       ],
       [
         Markup.button.callback(
-          `◀️ ${await t('back_to_categories')}`,
+          await t('back_to_categories'),
           'BACK_TO_SETTINGS'
         ),
       ],
@@ -207,19 +192,19 @@ const keyboard = {
     Markup.inlineKeyboard([
       [
         Markup.button.callback(
-          `🟢 ${await t('income_category')}`,
+          await t('income_category'),
           'EDIT_INCOME_CATEGORY'
         ),
       ],
       [
         Markup.button.callback(
-          `🔴 ${await t('expense_category')}`,
+          await t('expense_category'),
           'EDIT_EXPENSE_CATEGORY'
         ),
       ],
       [
         Markup.button.callback(
-          `◀️ ${await t('back_to_categories')}`,
+          await t('back_to_categories'),
           'BACK_TO_SETTINGS'
         ),
       ],

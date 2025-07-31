@@ -1,7 +1,10 @@
 {
   "welcome": "👋 Salom {{name}}!",
+  "what_would_you_like_to_do": "Nima qilmoqchisiz?",
   "add_expense": "➕💸 Xarajat qo'shish",
   "add_income": "➕💰 Daromad qo'shish",
+  "view_summary": "📊 Hisobotni ko'rish",
+  "settings": "⚙️ Sozlamalar",
   "error": "❌ Xatolik yuz berdi.",
   "income.welcome": "💵 Daromadingizni quyidagi formatda yuboring:\n`1200000 Ish haqi`\nYoki bir nechta:\n`1200000 Ish haqi, 300000 Frilanser`\n\nOrqaga qaytish uchun ❌ Bekor qilish tugmasini bosing.",
   "expense.welcome": "🧾 Xarajatlaringizni quyidagi formatda yuboring:\n`10000 Ovqat, 2000 Transport`\n\nOrqaga qaytish uchun ❌ Bekor qilish tugmasini bosing.",
@@ -18,12 +21,16 @@
   "edit_category": "Kategoriya tahrirlash",
   "view_all_categories": "Barcha kategoriyalarni ko'rish",
   "delete_category": "Kategoriya o'chirish",
-  "back_to_settings": "Sozlamalarga qaytish",
-  "back_to_categories": "Kategoriyalarga qaytish",
-  "income_category": "Daromad kategoriyasi",
-  "expense_category": "Xarajat kategoriyasi",
+  "back_to_settings": "🔙 Sozlamalarga qaytish",
+  "back_to_categories": "🔙 Kategoriyalarga qaytish",
+  "income_category": "🟢 Daromad kategoriyasi",
+  "expense_category": "🔴 Xarajat kategoriyasi",
   "confirm": "✅ Tasdiqlash",
   "cancel": "❌ Bekor qilish",
   "yes_delete": "✅ Ha, o'chirish",
-  "select_your_preferred_currency": "Iltimos, o'zingizning afzal valyutangizni tanlang:"
+  "select_your_preferred_currency": "Iltimos, o'zingizning afzal valyutangizni tanlang:",
+  "currency_set_to": "Valyuta quyidagicha o'rnatildi:",
+  "preferred_language": "Iltimos, o'zingizga afzal tilni tanlang:",
+  "settings_menu_closed": "Sozlamalar menyusi yopildi.",
+  "cancelled_back_to_main_menu": "❌ Bekor qilindi. Asosiy menuga qaytildi."
 }

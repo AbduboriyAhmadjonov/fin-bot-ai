@@ -14,7 +14,7 @@ export default async function contactHandler(bot) {
 Now you can start using the bot and track your expenses!
 If you want you can enter how much amount of money you have in your account.
 Or you can just skip this step entirely or/and enter it later.`,
-      keyboard.mainMenu
+      await keyboard.mainMenu(ctx.t)
     );
 
     createDefaultCategories(ctx);

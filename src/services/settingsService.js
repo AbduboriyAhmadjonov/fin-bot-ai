@@ -7,6 +7,16 @@ export async function changeLanguage(telegramId, language) {
   });
 }
 
+export async function getUserSettings(telegramId) {
+  return await prisma.user.findUnique({
+    where: { telegramId },
+    select: {
+      language: true,
+      currency: true,
+    },
+  });
+}
+
 export async function changeCurrency(telegramId, currency) {
   return await prisma.user.update({
     where: { telegramId },

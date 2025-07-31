@@ -13,7 +13,7 @@ export default async function categoryHandler(bot) {
     await ctx.answerCbQuery();
     await ctx.editMessageText(
       'Please select the action you want to perform:',
-      keyboard.categoriesKeyboard
+      await keyboard.categoriesKeyboard(ctx.t)
     );
   });
 
@@ -21,7 +21,7 @@ export default async function categoryHandler(bot) {
     await ctx.answerCbQuery();
     await ctx.editMessageText(
       'Please select the action you want to perform:',
-      keyboard.categoriesKeyboard
+      await keyboard.categoriesKeyboard(ctx.t)
     );
   });
 
@@ -31,7 +31,7 @@ export default async function categoryHandler(bot) {
     await ctx.answerCbQuery();
     await ctx.editMessageText(
       'Please choose the type of category:',
-      keyboard.addNewCategoryKeyboard
+      await keyboard.addNewCategoryKeyboard(ctx.t)
     );
   });
 

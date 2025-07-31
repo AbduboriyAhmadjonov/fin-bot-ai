@@ -14,7 +14,10 @@ export const incomeScene = new WizardScene(
     //   '💵 Send your income like:\n`1200000 Salary`\nOr multiple:\n`1200000 Salary, 300000 Freelance`\n\nPress ❌ Cancel to go back.',
     //   keyboard.cancelKeyboard
     // );
-    ctx.reply(await ctx.t('income.welcome'), keyboard.cancelKeyboard);
+    ctx.reply(
+      await ctx.t('income.welcome'),
+      await keyboard.cancelKeyboard(ctx.t)
+    );
     return ctx.wizard.next();
   },
 
@@ -23,7 +26,10 @@ export const incomeScene = new WizardScene(
     const text = ctx.message?.text;
 
     if (text === '❌ Cancel') {
-      await ctx.reply('❌ Income entry canceled.', keyboard.mainMenu);
+      await ctx.reply(
+        '❌ Income entry canceled.',
+        await keyboard.mainMenu(ctx.t)
+      );
       return ctx.scene.leave();
     }
 
@@ -74,14 +80,20 @@ export const incomeScene = new WizardScene(
       try {
         await addIncome(ctx.from.id.toString(), ctx.session.incomesToConfirm);
         await ctx.editMessageText('✅ Income saved.');
-        await ctx.reply('Back to Main Menu.', keyboard.mainMenu);
+        await ctx.reply(
+          await ctx.t('back_to_main_menu'),
+          await keyboard.mainMenu(ctx.t)
+        );
       } catch (err) {
         console.error('Income save error:', err);
         await ctx.reply('❌ Failed to save income. Try again later.');
       }
     } else if (data === 'CANCEL_INCOME') {
       await ctx.editMessageText('❌ Income entry canceled.');
-      await ctx.reply('Back to Main Menu.', keyboard.mainMenu);
+      await ctx.reply(
+        await ctx.t('back_to_main_menu'),
+        await keyboard.mainMenu(ctx.t)
+      );
     }
 
     return ctx.scene.leave();

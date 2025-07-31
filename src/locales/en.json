@@ -1,7 +1,10 @@
 {
   "welcome": "👋 Hello {{name}}!",
+  "what_would_you_like_to_do": "What would you like to do?",
   "add_expense": "➕💸 Add Expense",
   "add_income": "➕💰 Add Income",
+  "view_summary": "📊 View Summary",
+  "settings": "⚙️ Settings",
   "error": "❌ Something went wrong.",
   "income.welcome": "💵 Send your income like:\n`1200000 Salary`\nOr multiple:\n`1200000 Salary, 300000 Freelance`\n\nPress ❌ Cancel to go back.",
   "expense.welcome": "🧾 Send your expenses like:\n`10000 Food, 2000 Transport`\n\nPress ❌ Cancel to go back.",
@@ -18,12 +21,16 @@
   "edit_category": "Edit Category",
   "view_all_categories": "View All Categories",
   "delete_category": "Delete Category",
-  "back_to_settings": "Back to Settings",
-  "back_to_categories": "Back to Categories",
-  "income_category": "Income Category",
-  "expense_category": "Expense Category",
+  "back_to_settings": "🔙 Back to Settings",
+  "back_to_categories": "🔙 Back to Categories",
+  "income_category": "🟢 Income Category",
+  "expense_category": "🔴 Expense Category",
   "confirm": "✅ Confirm",
   "cancel": "❌ Cancel",
   "yes_delete": "✅ Yes, delete",
-  "select_your_preferred_currency": "Please select your preferred currency:"
+  "select_your_preferred_currency": "Please select your preferred currency:",
+  "currency_set_to": "Currency set to:",
+  "preferred_language": "Please select your preferred language:",
+  "settings_menu_closed": "Settings menu closed.",
+  "cancelled_back_to_main_menu": "❌ Cancelled. Back to main menu."
 }

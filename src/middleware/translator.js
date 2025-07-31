@@ -1,8 +1,10 @@
+import { getUserSettings } from '../services/settingsService.js';
+
 class Translator {
   constructor() {
     this.cache = new Map(); // Stores loaded translations: 'en' -> {key: value}
     this.userLangs = new Map(); // Stores user preferences: userId -> 'en'
-    this.defaultLang = 'uz';
+    this.defaultLang = 'en';
   }
 
   // Load translation file (with caching)
@@ -38,31 +40,37 @@ class Translator {
     }
   }
 
+  // Get user's language (fallback to default)
+  async getUserLanguage(userId) {
+    const cachedLang = this.userLangs.get(userId);
+    if (cachedLang) return cachedLang;
+
+    const userSettings = await getUserSettings(userId);
+    this.setUserLanguage(userId, userSettings.language);
+    return userSettings.language;
+  }
+
   // Set user's preferred language
   setUserLanguage(userId, lang) {
+    const current = this.userLangs.get(userId);
+    if (current === lang) return; // ✅ Avoiding unnecessary set/log
+
     this.userLangs.set(userId, lang);
     console.log(`👤 User ${userId} language set to: ${lang}`);
   }
 
-  // Get user's language (fallback to default)
-  getUserLanguage(userId) {
-    return this.userLangs.get(userId) || this.defaultLang;
-  }
-
   // Main translation method
   async translate(key, userId, params = {}) {
-    const lang = this.getUserLanguage(userId);
+    const lang = await this.getUserLanguage(userId);
     const translations = await this.loadTranslations(lang);
 
     // Get translation or return key if not found
-    let text = translations[key];
-
+    const text = translations[key];
     if (!text) {
       console.warn(`⚠️  Missing translation: ${key} (${lang})`);
-      return key; // Return the key itself as fallback
+      return key;
     }
 
-    // Replace parameters: "Hello {{name}}" -> "Hello John"
     for (const [param, value] of Object.entries(params)) {
       text = text.replace(new RegExp(`{{${param}}}`, 'g'), value);
     }
@@ -71,39 +79,32 @@ class Translator {
   }
 }
 
-// Create singleton instance
 export const translator = new Translator();
 
 export function translatorMiddleware() {
   return async (ctx, next) => {
-    // Load session language if present
-    const sessionLang = ctx.session?.language;
+    const userId = ctx.from?.id;
+    if (!userId) return next();
 
-    if (sessionLang && ctx.from?.id) {
-      const currentLang = translator.getUserLanguage(ctx.from.id);
-      if (sessionLang !== currentLang) {
-        translator.setUserLanguage(ctx.from.id, sessionLang);
-      }
+    // Step 1: Load from DB/cache via getUserLanguage
+    let lang = await translator.getUserLanguage(userId);
+
+    // Step 2: Save into session for future
+    if (ctx.session) {
+      ctx.session.language = lang;
     }
 
-    // Translation shortcut
-    ctx.t = (key, params = {}) => {
-      return translator.translate(key, ctx.from?.id, params);
+    // Translation shortcut (always async)
+    ctx.t = async (key, params = {}) => {
+      return translator.translate(key, userId, params);
     };
 
-    // Language setter that also updates session
-    ctx.setLang = (lang) => {
-      if (!ctx.from?.id || !lang) return;
+    // Allow language changes
+    ctx.setLang = async (newLang) => {
+      if (!newLang || newLang === lang) return;
 
-      const currentLang = translator.getUserLanguage(ctx.from.id);
-
-      // Only update if different
-      if (currentLang !== lang) {
-        translator.setUserLanguage(ctx.from.id, lang);
-        if (ctx.session) {
-          ctx.session.language = lang;
-        }
-      }
+      translator.setUserLanguage(userId, newLang);
+      if (ctx.session) ctx.session.language = newLang;
     };
 
     return next();
