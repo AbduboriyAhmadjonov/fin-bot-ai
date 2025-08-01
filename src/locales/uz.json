@@ -32,5 +32,42 @@
   "currency_set_to": "Valyuta quyidagicha o'rnatildi:",
   "preferred_language": "Iltimos, o'zingizga afzal tilni tanlang:",
   "settings_menu_closed": "Sozlamalar menyusi yopildi.",
-  "cancelled_back_to_main_menu": "❌ Bekor qilindi. Asosiy menuga qaytildi."
+  "cancelled_back_to_main_menu": "❌ Bekor qilindi. Asosiy menuga qaytildi.",
+
+  "delete_account_confirm": "⚠️ Haqiqatan ham FinBot AI hisobingizni o'chirishni xohlaysizmi? Bu harakatni qaytarib bo'lmaydi.",
+  "account_deleted_success": "🗑️ Hisobingiz muvaffaqiyatli o'chirildi.",
+  "account_deletion_error": "❌ Hisobingizni o'chirishda xatolik yuz berdi. Iltimos, keyinroq qayta urinib ko'ring.",
+  "account_deletion_cancelled": "👍 Hisobni o'chirish bekor qilindi.",
+
+  "settings_save_error": "❌ Sozlamalarni saqlashda xatolik yuz berdi. Iltimos, qayta urinib ko'ring.",
+
+  "select_category_type_to_edit": "Iltimos, tahrirlash uchun kategoriya turini tanlang:",
+  "no_income_categories": "Sizda tahrirlash uchun daromad kategoriyalari yo'q.",
+  "no_expense_categories": "Sizda tahrirlash uchun xarajat kategoriyalari yo'q.",
+  "select_income_category_to_edit": "Tahrirlash uchun daromad kategoriyasini tanlang:",
+  "select_expense_category_to_edit": "Tahrirlash uchun xarajat kategoriyasini tanlang:",
+  "category_deleted_success": "✅ Kategoriya muvaffaqiyatli o'chirildi.",
+  "category_delete_error": "❌ Kategoriyani o'chirishda xatolik yuz berdi.",
+  "category_not_found": "❌ Kategoriya topilmadi.",
+  "enter_new_category_name": "Iltimos, \"{{categoryName}}\" kategoriyasi uchun yangi nom kiriting:",
+  "invalid_category_name": "❌ Noto'g'ri kategoriya nomi. Iltimos, 1 dan 50 gacha belgi uzunligidagi nom kiriting.",
+  "category_renamed_success": "✅ Kategoriya muvaffaqiyatli ravishda \"{{categoryName}}\" ga o'zgartirildi.",
+  "category_rename_error": "❌ Kategoriyani qayta nomlashda xatolik yuz berdi. Iltimos, qayta urinib ko'ring.",
+  "category_edit_error": "❌ Kategoriyani tahrirlashda xatolik yuz berdi.",
+
+  "invalid_entries": "❌ Noto'g'ri kiritishlar aniqlandi:\n\n",
+  "correct_format_example": "Misol: 10000 Ovqat, 2000 Transport",
+
+  "processing_voice": "🎙️ Ovozli xabaringizni qayta ishlamoqdaman...",
+  "voice_transcription": "✅ Ovozli xabaringiz quyidagicha o'girildi:\n\"{{text}}\"\n\nBu xarajat yoki daromadmi?",
+  "voice_processing_error": "❌ Ovozli xabaringizni qayta ishlashda xatolik yuz berdi. Iltimos, qayta urinib ko'ring yoki matnli xabar yuboring.",
+  "voice_parsing_error": "❌ Ovozli xabaringizda summa va tavsifni aniqlab bo'lmadi. Iltimos, aniqroq formatda qayta urinib ko'ring.",
+  "voice_cancelled": "❌ Ovozni qayta ishlash bekor qilindi.",
+  "expense": "💸 Xarajat",
+  "income": "💰 Daromad",
+
+  "admin_auth_timeout": "⏱️ Autentifikatsiya vaqti tugadi. Iltimos, /admin buyrug'ini yuborib qayta urinib ko'ring.",
+  "admin_login_attempt_limit": "⚠️ Juda ko'p muvaffaqiyatsiz urinishlar. Iltimos, keyinroq qayta urinib ko'ring.",
+
+  "seed_categories_success": "✅ Standart kategoriyalar yaratildi."
 }

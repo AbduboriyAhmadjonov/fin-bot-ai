@@ -34,14 +34,40 @@ export const expenseScene = new WizardScene(
       .split(',')
       .map((e) => {
         const [amount, ...desc] = e.trim().split(' ');
+        const parsedAmount = parseFloat(amount);
+        const description = desc.join(' ').trim();
         return {
-          amount: parseFloat(amount),
-          description: desc.join(' ') || 'No description',
+          amount: parsedAmount,
+          description: description,
+          isValid: !isNaN(parsedAmount) && parsedAmount > 0 && description.length > 0
         };
-      })
-      .filter((e) => !isNaN(e.amount) && e.amount > 0);
-
-    if (!entries.length) {
+      });
+    
+    // Check if any entries are invalid
+    const invalidEntries = entries.filter(e => !e.isValid);
+    if (invalidEntries.length > 0) {
+      let errorMsg = await ctx.t('invalid_entries') || '❌ Invalid entries detected:\n\n';
+      
+      invalidEntries.forEach((entry, i) => {
+        if (isNaN(entry.amount)) {
+          errorMsg += `${i+1}. Invalid amount: "${entry.amount}"\n`;
+        } else if (entry.amount <= 0) {
+          errorMsg += `${i+1}. Amount must be positive: "${entry.amount}"\n`;
+        } else if (!entry.description) {
+          errorMsg += `${i+1}. Missing description for amount: "${entry.amount}"\n`;
+        }
+      });
+      
+      errorMsg += '\n' + (await ctx.t('correct_format_example') || 'Example: 10000 Food, 2000 Transport');
+      
+      await ctx.reply(errorMsg);
+      return; // stay on the same step
+    }
+    
+    // Filter out any potential invalid entries before proceeding
+    const validEntries = entries.filter(e => e.isValid).map(({amount, description}) => ({amount, description}));
+    
+    if (!validEntries.length) {
       await ctx.reply(await ctx.t('invalid_format'));
       return; // stay on the same step
     }

@@ -44,6 +44,23 @@ export async function viewCategories({ userId, type }) {
   });
 }
 
+export async function updateCategory({ categoryId, name }) {
+  if (!name || name.trim() === '') {
+    throw new Error('Category name cannot be empty');
+  }
+
+  return await prisma.category.update({
+    where: { id: categoryId },
+    data: { name: name.trim() },
+  });
+}
+
+export async function getCategoryById(categoryId) {
+  return await prisma.category.findUnique({
+    where: { id: categoryId },
+  });
+}
+
 export async function ensureDefaultCategories(userId) {
   const existing = await prisma.category.findFirst({
     where: { userId, isDefault: true },

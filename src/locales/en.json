@@ -32,5 +32,42 @@
   "currency_set_to": "Currency set to:",
   "preferred_language": "Please select your preferred language:",
   "settings_menu_closed": "Settings menu closed.",
-  "cancelled_back_to_main_menu": "❌ Cancelled. Back to main menu."
+  "cancelled_back_to_main_menu": "❌ Cancelled. Back to main menu.",
+
+  "delete_account_confirm": "⚠️ Are you sure you want to delete your FinBot AI account? This action is irreversible.",
+  "account_deleted_success": "🗑️ Your account has been deleted successfully.",
+  "account_deletion_error": "❌ An error occurred while deleting your account. Please try again later.",
+  "account_deletion_cancelled": "👍 Account deletion cancelled.",
+
+  "settings_save_error": "❌ Failed to save settings. Please try again.",
+
+  "select_category_type_to_edit": "Please select the type of category to edit:",
+  "no_income_categories": "You don't have any income categories to edit.",
+  "no_expense_categories": "You don't have any expense categories to edit.",
+  "select_income_category_to_edit": "Select an income category to edit:",
+  "select_expense_category_to_edit": "Select an expense category to edit:",
+  "category_deleted_success": "✅ Category deleted successfully.",
+  "category_delete_error": "❌ Failed to delete category.",
+  "category_not_found": "❌ Category not found.",
+  "enter_new_category_name": "Please enter a new name for the category \"{{categoryName}}\":",
+  "invalid_category_name": "❌ Invalid category name. Please enter a name between 1 and 50 characters.",
+  "category_renamed_success": "✅ Category successfully renamed to \"{{categoryName}}\".",
+  "category_rename_error": "❌ Failed to rename category. Please try again.",
+  "category_edit_error": "❌ Failed to edit category.",
+
+  "invalid_entries": "❌ Invalid entries detected:\n\n",
+  "correct_format_example": "Example: 10000 Food, 2000 Transport",
+
+  "processing_voice": "🎙️ Processing your voice message...",
+  "voice_transcription": "✅ I've transcribed your voice message as:\n\"{{text}}\"\n\nIs this an expense or income?",
+  "voice_processing_error": "❌ Failed to process your voice message. Please try again or send a text message instead.",
+  "voice_parsing_error": "❌ Could not identify amount and description in your voice message. Please try again with a clearer format.",
+  "voice_cancelled": "❌ Voice processing cancelled.",
+  "expense": "💸 Expense",
+  "income": "💰 Income",
+
+  "admin_auth_timeout": "⏱️ Authentication timed out. Please try again by sending /admin.",
+  "admin_login_attempt_limit": "⚠️ Too many failed attempts. Please try again later.",
+
+  "seed_categories_success": "✅ Default categories have been created."
 }

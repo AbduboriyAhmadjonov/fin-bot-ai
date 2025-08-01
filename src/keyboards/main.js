@@ -166,50 +166,6 @@ const keyboard = {
       ],
     ]).resize(),
 
-  editCategoryKeyboard: async (t) =>
-    Markup.inlineKeyboard([
-      [
-        Markup.button.callback(
-          await t('income_category'),
-          'EDIT_INCOME_CATEGORY'
-        ),
-      ],
-      [
-        Markup.button.callback(
-          await t('expense_category'),
-          'EDIT_EXPENSE_CATEGORY'
-        ),
-      ],
-      [
-        Markup.button.callback(
-          await t('back_to_categories'),
-          'BACK_TO_SETTINGS'
-        ),
-      ],
-    ]).resize(),
-
-  editCategoryKeyboard: async (t) =>
-    Markup.inlineKeyboard([
-      [
-        Markup.button.callback(
-          await t('income_category'),
-          'EDIT_INCOME_CATEGORY'
-        ),
-      ],
-      [
-        Markup.button.callback(
-          await t('expense_category'),
-          'EDIT_EXPENSE_CATEGORY'
-        ),
-      ],
-      [
-        Markup.button.callback(
-          await t('back_to_categories'),
-          'BACK_TO_SETTINGS'
-        ),
-      ],
-    ]).resize(),
-
   /**
    * Confirmation Keyboards
    */

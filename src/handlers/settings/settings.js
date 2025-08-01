@@ -16,7 +16,7 @@ export default async function settingsHandler(bot) {
     await ctx.answerCbQuery();
     await ctx.editMessageText(
       await ctx.t('back_to_main_menu'),
-      keyboard.mainMenu(ctx.t)
+      await keyboard.mainMenu(ctx.t)
     );
   });
 
@@ -24,7 +24,7 @@ export default async function settingsHandler(bot) {
     await ctx.answerCbQuery();
     await ctx.editMessageText(
       await ctx.t('back_to_settings'),
-      keyboard.settingsKeyboard(ctx.t)
+      await keyboard.settingsKeyboard(ctx.t)
     );
   });
 

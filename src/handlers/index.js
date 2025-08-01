@@ -1,6 +1,4 @@
 import start from './commands/start.js';
-// import incomeHandler from './incomeHandler.js';
-// import expenseHandler from './expenseHandler.js';
 import contactHandler from './contactHandler.js';
 
 // Settings handlers
@@ -11,12 +9,18 @@ import languageHandler from './settings/changeLanguage.js';
 import deleteAccountHandler from './settings/deleteAccaunt.js';
 
 // Admin
-import registerAdminLogin from './adminLogin.js';
+import registerAdminLogin from './adminLoginNew.js';
+
+// Voice processing
+import {
+  handleVoiceMessage,
+  handleVoiceExpenseCallback,
+  handleVoiceIncomeCallback,
+  handleVoiceCancelCallback,
+} from './voiceHandler.js';
 
 export default function registerHandlers(bot) {
   start(bot);
-  // incomeHandler(bot);
-  // expenseHandler(bot);
   contactHandler(bot);
 
   // Settings
@@ -25,6 +29,12 @@ export default function registerHandlers(bot) {
   currencyHandler(bot);
   languageHandler(bot);
   deleteAccountHandler(bot);
+
+  // Voice message handling
+  bot.on('voice', handleVoiceMessage);
+  bot.action(/voice_expense:(.+)/, handleVoiceExpenseCallback);
+  bot.action(/voice_income:(.+)/, handleVoiceIncomeCallback);
+  bot.action('cancel_voice', handleVoiceCancelCallback);
 
   // Admin
   registerAdminLogin(bot);
