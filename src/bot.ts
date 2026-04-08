@@ -39,8 +39,10 @@ bot.catch(async (err: unknown, ctx: BotContext) => {
     update: isDevelopment ? ctx.update : undefined,
   });
 
-  if (ctx.reply) {
-    ctx.reply(await ctx.t('error'));
+  try {
+    await ctx.reply(await ctx.t('error'));
+  } catch {
+    // reply may fail if the context is invalid
   }
 });
 
@@ -67,10 +69,10 @@ bot.command('stats', requireAdmin(), async (ctx) => {
       await ctx.reply(message);
       return;
     }
-    ctx.reply(await ctx.t('admin_only'));
+    await ctx.reply(await ctx.t('admin_only'));
   } catch (error) {
     console.error('❌ Stats command error:', error);
-    ctx.reply(await ctx.t('error.stats'));
+    await ctx.reply(await ctx.t('error.stats'));
   }
 });
 
@@ -78,19 +80,19 @@ registerHandlers(bot);
 
 bot.hears('➕💸 Add Expense', async (ctx) => {
   try {
-    ctx.scene.enter('expense-wizard');
+    await ctx.scene.enter('expense-wizard');
   } catch (error) {
     console.error('❌ Error entering expense wizard:', error);
-    ctx.reply(await ctx.t('error.expense'));
+    await ctx.reply(await ctx.t('error.expense'));
   }
 });
 
 bot.hears('➕💰 Add Income', async (ctx) => {
   try {
-    ctx.scene.enter('income-wizard');
+    await ctx.scene.enter('income-wizard');
   } catch (error) {
     console.error('❌ Error entering income wizard:', error);
-    ctx.reply(await ctx.t('error.income'));
+    await ctx.reply(await ctx.t('error.income'));
   }
 });
 

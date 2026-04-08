@@ -8,7 +8,7 @@ export const incomeScene = new Scenes.WizardScene<BotContext>(
 
   async (ctx) => {
     ctx.session.incomesToConfirm = [];
-    ctx.reply(await ctx.t('income.welcome'), keyboard.cancelKeyboard);
+    await ctx.reply(await ctx.t('income.welcome'), keyboard.cancelKeyboard);
     return ctx.wizard.next();
   },
 

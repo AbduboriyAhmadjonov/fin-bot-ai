@@ -18,6 +18,6 @@ Or you can just skip this step entirely or/and enter it later.`,
       keyboard.mainMenu
     );
 
-    createDefaultCategories(ctx);
+    await createDefaultCategories(ctx);
   });
 }
