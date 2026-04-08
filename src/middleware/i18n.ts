@@ -8,6 +8,13 @@ class SimpleI18n {
   userLangs: Map<number, string>;
   defaultLang: string;
 
+  private readonly hardcodedFallback: Record<string, string> = {
+    error: 'An error occurred. Please try again.',
+    'error.stats': 'Failed to load stats.',
+    'error.expense': 'Failed to add expense.',
+    'error.income': 'Failed to add income.',
+  };
+
   constructor() {
     this.cache = new Map();
     this.userLangs = new Map();
@@ -26,22 +33,22 @@ class SimpleI18n {
       ) as { default: Translations };
 
       this.cache.set(lang, translations);
-      console.log(`✅ Loaded language: ${lang}`);
+      console.log(`Loaded language: ${lang}`);
       return translations;
     } catch {
-      console.warn(`❌ Language ${lang} not found, using ${this.defaultLang}`);
+      console.error(`Failed to load language: ${lang}`);
 
       if (lang !== this.defaultLang) {
         return this.loadTranslations(this.defaultLang);
       }
 
+      // Do NOT cache {} — allow retry on next call
       return {};
     }
   }
 
   setUserLanguage(userId: number, lang: string): void {
     this.userLangs.set(userId, lang);
-    console.log(`👤 User ${userId} language set to: ${lang}`);
   }
 
   getUserLanguage(userId: number): string {
@@ -52,10 +59,10 @@ class SimpleI18n {
     const lang = this.getUserLanguage(userId);
     const translations = await this.loadTranslations(lang);
 
-    let text = translations[key];
+    let text = translations[key] || this.hardcodedFallback[key];
 
     if (!text) {
-      console.warn(`⚠️  Missing translation: ${key} (${lang})`);
+      console.warn(`Missing translation: ${key} (${lang})`);
       return key;
     }
 

@@ -2,6 +2,7 @@ import { Telegraf } from 'telegraf';
 import type { BotContext } from '../../types.js';
 import keyboard from '../../keyboards/main.js';
 import { changeCurrency } from '../../services/settingsService.js';
+import { safe } from '../../utils.js';
 
 export default async function currencyHandler(bot: Telegraf<BotContext>): Promise<void> {
   bot.action('CHANGE_CURRENCY', async (ctx) => {
@@ -12,31 +13,31 @@ export default async function currencyHandler(bot: Telegraf<BotContext>): Promis
     );
   });
 
-  bot.action('CURRENCY_USD', async (ctx) => {
+  bot.action('CURRENCY_USD', safe(async (ctx) => {
     await changeCurrency(ctx.from!.id, 'USD');
     await ctx.answerCbQuery();
     await ctx.editMessageText('✅ Currency set to USD 💵');
     await ctx.reply('Back to Settings', keyboard.settingsKeyboard);
-  });
+  }));
 
-  bot.action('CURRENCY_EUR', async (ctx) => {
+  bot.action('CURRENCY_EUR', safe(async (ctx) => {
     await changeCurrency(ctx.from!.id, 'EUR');
     await ctx.answerCbQuery();
     await ctx.editMessageText('✅ Currency set to EUR 💶');
     await ctx.reply('Back to Settings', keyboard.settingsKeyboard);
-  });
+  }));
 
-  bot.action('CURRENCY_UZS', async (ctx) => {
+  bot.action('CURRENCY_UZS', safe(async (ctx) => {
     await changeCurrency(ctx.from!.id, 'UZS');
     await ctx.answerCbQuery();
     await ctx.editMessageText('✅ Currency set to UZS 🇺🇿');
     await ctx.reply('Back to Settings', keyboard.settingsKeyboard);
-  });
+  }));
 
-  bot.action('CURRENCY_RUB', async (ctx) => {
+  bot.action('CURRENCY_RUB', safe(async (ctx) => {
     await changeCurrency(ctx.from!.id, 'RUB');
     await ctx.answerCbQuery();
     await ctx.editMessageText('✅ Currency set to RUB 🇷🇺');
     await ctx.reply('Back to Settings', keyboard.settingsKeyboard);
-  });
+  }));
 }

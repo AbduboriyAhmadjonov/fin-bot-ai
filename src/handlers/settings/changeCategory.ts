@@ -6,9 +6,10 @@ import {
   deleteCategory,
   viewCategories,
 } from '../../services/categoryService.js';
+import { safe } from '../../utils.js';
 
 export default async function categoryHandler(bot: Telegraf<BotContext>): Promise<void> {
-  bot.action('MANAGE_CATEGORIES', async (ctx) => {
+  bot.action('MANAGE_CATEGORIES', safe(async (ctx) => {
     ctx.session.botState = 'awaiting_category_action';
 
     await ctx.answerCbQuery();
@@ -16,7 +17,7 @@ export default async function categoryHandler(bot: Telegraf<BotContext>): Promis
       'Please select the action you want to perform:',
       keyboard.categoriesKeyboard
     );
-  });
+  }));
 
   bot.action('BACK_TO_CATEGORIES', async (ctx) => {
     await ctx.answerCbQuery();
@@ -67,7 +68,7 @@ export default async function categoryHandler(bot: Telegraf<BotContext>): Promis
     ctx.session.botState = 'awaiting_edit_expense_category';
   });
 
-  bot.action('VIEW_CATEGORY', async (ctx) => {
+  bot.action('VIEW_CATEGORY', safe(async (ctx) => {
     await ctx.answerCbQuery();
 
     const userId = ctx.from!.id;
@@ -101,9 +102,9 @@ export default async function categoryHandler(bot: Telegraf<BotContext>): Promis
       parse_mode: 'Markdown',
       reply_markup: keyboard.backToCategoriesKeyboard.reply_markup,
     });
-  });
+  }));
 
-  bot.action('DELETE_CATEGORY', async (ctx) => {
+  bot.action('DELETE_CATEGORY', safe(async (ctx) => {
     await ctx.answerCbQuery();
 
     const categories = await viewCategories({
@@ -112,7 +113,8 @@ export default async function categoryHandler(bot: Telegraf<BotContext>): Promis
     });
 
     if (!categories.length) {
-      return await ctx.editMessageText('No categories to delete.');
+      await ctx.editMessageText('No categories to delete.');
+      return;
     }
 
     const buttons = categories.map((cat) => [
@@ -125,18 +127,13 @@ export default async function categoryHandler(bot: Telegraf<BotContext>): Promis
     await ctx.editMessageText('Select a category to delete:', {
       reply_markup: { inline_keyboard: buttons },
     });
-  });
+  }));
 
-  bot.action(/^DELETE_CATEGORY_(.+)$/, async (ctx) => {
+  bot.action(/^DELETE_CATEGORY_(.+)$/, safe(async (ctx) => {
     const categoryId = ctx.match![1];
     await ctx.answerCbQuery();
 
-    try {
-      await deleteCategory({ categoryId });
-      await ctx.editMessageText('✅ Category deleted successfully.');
-    } catch (err) {
-      console.error(err);
-      await ctx.editMessageText('❌ Failed to delete category.');
-    }
-  });
+    await deleteCategory({ categoryId });
+    await ctx.editMessageText('✅ Category deleted successfully.');
+  }));
 }

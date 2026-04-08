@@ -18,15 +18,21 @@ export default function registerAdminLogin(bot: Telegraf<BotContext>): void {
   bot.on('text', async (ctx, next) => {
     if (!pendingAuthUsers.has(ctx.from.id)) return next();
 
-    const enteredPassword = ctx.message.text;
-    const isMatch = await bcrypt.compare(enteredPassword, ADMIN_PASSWORD_HASH);
+    try {
+      const enteredPassword = ctx.message.text;
+      const isMatch = await bcrypt.compare(enteredPassword, ADMIN_PASSWORD_HASH);
 
-    if (isMatch) {
+      if (isMatch) {
+        pendingAuthUsers.delete(ctx.from.id);
+        ctx.session.isAdmin = true;
+        return ctx.reply('✅ Siz admin sifatida tasdiqlandingiz.');
+      } else {
+        return ctx.reply("❌ Noto'g'ri parol. Yana urinib ko'ring.");
+      }
+    } catch (err) {
+      console.error('Admin login error:', err);
       pendingAuthUsers.delete(ctx.from.id);
-      ctx.session.isAdmin = true;
-      return ctx.reply('✅ Siz admin sifatida tasdiqlandingiz.');
-    } else {
-      return ctx.reply("❌ Noto'g'ri parol. Yana urinib ko'ring.");
+      return ctx.reply('An error occurred. Please try again.');
     }
   });
 }

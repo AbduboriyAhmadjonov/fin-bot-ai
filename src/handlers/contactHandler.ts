@@ -3,9 +3,10 @@ import type { BotContext } from '../types.js';
 import keyboard from '../keyboards/main.js';
 import { createUserIfNotExisted } from '../services/index.js';
 import createDefaultCategories from './createDefaultCategories.js';
+import { safe } from '../utils.js';
 
 export default async function contactHandler(bot: Telegraf<BotContext>): Promise<void> {
-  bot.on('contact', async (ctx) => {
+  bot.on('contact', safe(async (ctx) => {
     const { user, isNew } = await createUserIfNotExisted(ctx);
     await ctx.reply(
       `${isNew ? 'Welcome' : 'Welcome back'}, ${
@@ -19,5 +20,5 @@ Or you can just skip this step entirely or/and enter it later.`,
     );
 
     await createDefaultCategories(ctx);
-  });
+  }));
 }

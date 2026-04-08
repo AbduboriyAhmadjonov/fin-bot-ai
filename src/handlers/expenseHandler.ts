@@ -65,9 +65,14 @@ export const expenseScene = new Scenes.WizardScene<BotContext>(
     await ctx.answerCbQuery();
 
     if (data === 'CONFIRM_EXPENSES') {
-      await addExpense(ctx.from!.id, ctx.session.expensesToConfirm);
-      await ctx.editMessageText('✅ Expenses saved.');
-      await ctx.reply('Back to Main Menu.', keyboard.mainMenu);
+      try {
+        await addExpense(ctx.from!.id, ctx.session.expensesToConfirm);
+        await ctx.editMessageText('✅ Expenses saved.');
+        await ctx.reply('Back to Main Menu.', keyboard.mainMenu);
+      } catch (err) {
+        console.error('Expense save error:', err);
+        await ctx.reply('❌ Failed to save expenses. Try again later.');
+      }
     } else if (data === 'CANCEL_EXPENSES') {
       await ctx.editMessageText('❌ Expense entry canceled.');
       await ctx.reply('Back to Main Menu.', keyboard.mainMenu);

@@ -7,6 +7,7 @@ import { requireAdmin } from './middleware/adminCheck.js';
 import statsCommand from './handlers/commands/stats.js';
 import stage from './middleware/stage.js';
 import { i18nMiddleware } from './middleware/i18n.js';
+import { getPrisma, disconnect } from './db/prismaClient.js';
 
 dotenv.config();
 
@@ -36,13 +37,16 @@ bot.catch(async (err: unknown, ctx: BotContext) => {
     stack: isDevelopment ? error.stack : undefined,
     user: ctx.from?.id,
     chat: ctx.chat?.id,
-    update: isDevelopment ? ctx.update : undefined,
   });
 
   try {
     await ctx.reply(await ctx.t('error'));
   } catch {
-    // reply may fail if the context is invalid
+    try {
+      await ctx.reply('An error occurred. Please try again.');
+    } catch {
+      // ctx.reply itself failed — already logged above
+    }
   }
 });
 
@@ -125,6 +129,9 @@ async function setupWebhook(): Promise<void> {
   try {
     console.log(`🚀 Starting bot in ${NODE_ENV} mode...`);
 
+    await getPrisma().$connect();
+    console.log('✅ Database connected');
+
     if (isProduction) {
       await setupWebhook();
     } else {
@@ -149,6 +156,7 @@ const gracefulShutdown = async (signal: string): Promise<void> => {
   console.log(`🛑 Received ${signal}. Starting graceful shutdown...`);
   try {
     await bot.stop(signal);
+    await disconnect();
     console.log('✅ Bot stopped gracefully');
     process.exit(0);
   } catch (err) {
