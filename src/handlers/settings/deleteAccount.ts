@@ -27,6 +27,6 @@ export default async function deleteAccountHandler(bot: Telegraf<BotContext>): P
   bot.action('CANCEL_DELETE', async (ctx) => {
     await ctx.answerCbQuery();
     await ctx.editMessageText('👍 Account deletion cancelled.');
-    await ctx.replyWithMarkdownV2('Back to Settings', keyboard.settingsKeyboard);
+    await ctx.reply('Back to Settings', keyboard.settingsKeyboard);
   });
 }

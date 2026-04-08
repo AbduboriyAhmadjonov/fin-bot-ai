@@ -16,27 +16,27 @@ export default async function currencyHandler(bot: Telegraf<BotContext>): Promis
     await changeCurrency(ctx.from!.id, 'USD');
     await ctx.answerCbQuery();
     await ctx.editMessageText('✅ Currency set to USD 💵');
-    await ctx.replyWithMarkdownV2('Back to Settings', keyboard.settingsKeyboard);
+    await ctx.reply('Back to Settings', keyboard.settingsKeyboard);
   });
 
   bot.action('CURRENCY_EUR', async (ctx) => {
     await changeCurrency(ctx.from!.id, 'EUR');
     await ctx.answerCbQuery();
     await ctx.editMessageText('✅ Currency set to EUR 💶');
-    await ctx.replyWithMarkdownV2('Back to Settings', keyboard.settingsKeyboard);
+    await ctx.reply('Back to Settings', keyboard.settingsKeyboard);
   });
 
   bot.action('CURRENCY_UZS', async (ctx) => {
     await changeCurrency(ctx.from!.id, 'UZS');
     await ctx.answerCbQuery();
     await ctx.editMessageText('✅ Currency set to UZS 🇺🇿');
-    await ctx.replyWithMarkdownV2('Back to Settings', keyboard.settingsKeyboard);
+    await ctx.reply('Back to Settings', keyboard.settingsKeyboard);
   });
 
   bot.action('CURRENCY_RUB', async (ctx) => {
     await changeCurrency(ctx.from!.id, 'RUB');
     await ctx.answerCbQuery();
     await ctx.editMessageText('✅ Currency set to RUB 🇷🇺');
-    await ctx.replyWithMarkdownV2('Back to Settings', keyboard.settingsKeyboard);
+    await ctx.reply('Back to Settings', keyboard.settingsKeyboard);
   });
 }

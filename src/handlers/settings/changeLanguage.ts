@@ -17,7 +17,7 @@ export default async function languageHandler(bot: Telegraf<BotContext>): Promis
     ctx.setLang('en');
     await ctx.answerCbQuery();
     await ctx.editMessageText('✅ Language updated to English 🇬🇧');
-    await ctx.replyWithMarkdownV2('Back to Settings', keyboard.settingsKeyboard);
+    await ctx.reply('Back to Settings', keyboard.settingsKeyboard);
   });
 
   bot.action('LANG_RU', async (ctx) => {
@@ -25,7 +25,7 @@ export default async function languageHandler(bot: Telegraf<BotContext>): Promis
     ctx.setLang('ru');
     await ctx.answerCbQuery();
     await ctx.editMessageText('✅ Язык обновлен на русский 🇷🇺');
-    await ctx.replyWithMarkdownV2('Back to Settings', keyboard.settingsKeyboard);
+    await ctx.reply('Back to Settings', keyboard.settingsKeyboard);
   });
 
   bot.action('LANG_UZ', async (ctx) => {
@@ -33,6 +33,6 @@ export default async function languageHandler(bot: Telegraf<BotContext>): Promis
     ctx.setLang('uz');
     await ctx.answerCbQuery();
     await ctx.editMessageText("✅ Til o'zbek tiliga o'zgartirildi 🇺🇿");
-    await ctx.replyWithMarkdownV2('Back to Settings', keyboard.settingsKeyboard);
+    await ctx.reply('Back to Settings', keyboard.settingsKeyboard);
   });
 }
