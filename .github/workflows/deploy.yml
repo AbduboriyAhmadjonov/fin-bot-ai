@@ -22,5 +22,11 @@ jobs:
       - name: Install deps
         run: npm ci
 
+      - name: Generate Prisma client
+        run: npx prisma generate
+
+      - name: Build TypeScript
+        run: npm run build
+
       - name: Run
         run: pm2 restart fin-bot-ai

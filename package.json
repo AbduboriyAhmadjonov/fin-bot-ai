@@ -2,10 +2,12 @@
   "name": "finbotai",
   "version": "1.0.0",
   "description": "",
-  "main": "bot.js",
+  "main": "dist/bot.js",
   "scripts": {
-    "start": "node ./src/bot.js",
-    "dev": "nodemon ./src/bot.js"
+    "build": "tsc",
+    "start": "node ./dist/bot.js",
+    "dev": "tsx watch ./src/bot.ts",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
@@ -16,11 +18,17 @@
     "bcryptjs": "^3.0.2",
     "dotenv": "^16.5.0",
     "nodemon": "^3.1.10",
+    "pdfkit": "^0.18.0",
     "pg": "^8.16.0",
     "pino": "^9.7.0",
     "telegraf": "^4.16.3"
   },
   "devDependencies": {
-    "prisma": "^6.8.2"
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^25.5.2",
+    "@types/pdfkit": "^0.17.5",
+    "prisma": "^6.8.2",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
   }
 }
