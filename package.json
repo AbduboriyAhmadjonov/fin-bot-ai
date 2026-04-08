@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/bot.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp -r src/db/generated dist/db/",
     "start": "node ./dist/bot.js",
     "dev": "tsx watch ./src/bot.ts",
     "typecheck": "tsc --noEmit"
